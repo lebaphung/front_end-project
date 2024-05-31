@@ -1,3 +1,4 @@
+import "./productItem.css";
 import React from 'react';
 import {Link} from 'react-router-dom';
 // npm install react-slick slick-carousel
@@ -27,13 +28,19 @@ const Home = () => {
                             {category.products.map(product => (
                                 <div key={product.id} className={"p-2"}>
                                     {/* Hiển thị thông tin sản phẩm */}
-                                    <Link className={"text-decoration-none text-dark"} to={`/product/${product.id}`}>
-                                        <img src={product.img}/>
-                                        <h3>{product.name}</h3>
-                                        <div className={"d-flex"}>Giá:&nbsp;
-                                            <p className={"text-danger"}>{product.price}đ</p>
-                                        </div>
-                                    </Link>
+                                    <div className={"p-2 border rounded-3"}>
+                                        <Link className={"text-decoration-none text-dark"}
+                                              to={`/product/${product.id}`}>
+                                            <div>
+                                                <img src={product.img} className={"w-100 h-100 border rounded-3 hover-scale"}/>
+                                            </div>
+                                            <h3>{product.name}</h3>
+                                            <div className={"d-flex justify-content-center"}>Giá:&nbsp;
+                                                <p className={"text-danger fw-bold"}>{product.price}đ</p>
+                                            </div>
+                                        </Link>
+                                        <button className={"btn btn-success"}>Thêm vào giỏ hàng</button>
+                                    </div>
                                 </div>
                             ))}
                         </Slider>
