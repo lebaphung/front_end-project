@@ -9,10 +9,10 @@ import Home from "../component/Home";
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: <Home/>,
+        element: <App/>,
         errorElement: <Error/>,
         children: [{
-            path: '/home',
+            path: '/',
             element: <Home/>
             },
             {
