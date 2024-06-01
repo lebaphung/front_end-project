@@ -1,14 +1,21 @@
 import "./productItem.css";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 // npm install react-slick slick-carousel
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 // Dữ liệu mẫu của sản phẩm phân loại
-import {categorizedProducts} from '../data/categories'
 
 const Home = () => {
+    //get data
+    const [categorizedProducts, setCategorizedProducts] = useState([]);
+
+    useEffect(() => {
+        fetch('/jsondata/categories.json')
+            .then(response => response.json())
+            .then(data => setCategorizedProducts(data));
+    }, []);
     // Cấu hình của carousel
     const settings = {
         dots: true,
