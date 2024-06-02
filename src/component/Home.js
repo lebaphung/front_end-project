@@ -1,21 +1,17 @@
 import "./productItem.css";
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 // npm install react-slick slick-carousel
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import {useSelector} from "react-redux";
 // Dữ liệu mẫu của sản phẩm phân loại
 
 const Home = () => {
     //get data
-    const [categorizedProducts, setCategorizedProducts] = useState([]);
+    const categorizedProducts = useSelector(state => state.products);
 
-    useEffect(() => {
-        fetch('/jsondata/categories.json')
-            .then(response => response.json())
-            .then(data => setCategorizedProducts(data));
-    }, []);
     // Cấu hình của carousel
     const settings = {
         dots: true,
@@ -39,7 +35,8 @@ const Home = () => {
                                         <Link className={"text-decoration-none text-dark"}
                                               to={`/product/${product.id}`}>
                                             <div>
-                                                <img src={product.img} className={"w-100 h-100 border rounded-3 hover-scale"}/>
+                                                <img src={product.img}
+                                                     className={"w-100 h-100 border rounded-3 hover-scale"}/>
                                             </div>
                                             <h3>{product.name}</h3>
                                             <div className={"d-flex justify-content-center"}>Giá:&nbsp;
