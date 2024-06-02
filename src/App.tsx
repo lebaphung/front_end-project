@@ -1,24 +1,41 @@
-import React, {useEffect} from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import { Provider, useDispatch } from 'react-redux';
+import { store } from './store/Store';
+import {loadProduct} from './store/Action';
+import { Outlet } from 'react-router-dom';
 import './App.css';
-import {Provider, useDispatch} from "react-redux";
-import {store} from "./store/Store";
-import ProductList from "./component/ProductList";
-import {loadProduct} from "./store/Action";
-import {products} from "./data/ProductData";
-import {Outlet} from "react-router-dom";
 
 function App() {
+    const [homeCategorizedProducts, setHomeCategorizedProducts] = useState([]);
+    const [productPageCategorizedProducts, setProductPageCategorizedProducts] = useState([]);
+
+    useEffect(() => {
+        fetch('/jsondata/homepage_category_products.json')
+            .then(response => response.json())
+            .then(data => setHomeCategorizedProducts(data))
+            .catch(error => console.error('Lỗi khi tải dữ liệu:', error));
+    }, []);
+
+    useEffect(() => {
+        fetch('/jsondata/productpage_category_products.json')
+            .then(response => response.json())
+            .then(data => setProductPageCategorizedProducts(data))
+            .catch(error => console.error('Lỗi khi tải dữ liệu:', error));
+    }, []);
+
     const dispatch = useDispatch();
-    useEffect(() => { // khi load lên tự động thêm store
-        dispatch(loadProduct(products));
-        // dispatch(loadProduct(products));
-    })
-  return (
+    useEffect(() => {
+        if (productPageCategorizedProducts.length > 0) {
+            dispatch(loadProduct(productPageCategorizedProducts));
+        }
+    }, [dispatch, productPageCategorizedProducts]);
+
+
+    return (
         <div className="App">
-            <Outlet></Outlet>
+            <Outlet context={{ homeCategorizedProducts, productPageCategorizedProducts }} />
         </div>
-  );
+    );
 }
 
 export default App;
