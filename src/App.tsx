@@ -9,7 +9,7 @@ import {Outlet} from "react-router-dom";
 function App() {
     const [categorizedProducts, setCategorizedProducts] = useState([]);
     useEffect(() => {
-        fetch('/jsondata/categories.json')
+        fetch('/jsondata/homepage_category_products.json')
             .then(response => response.json())
             .then(data => setCategorizedProducts(data));
     }, []);

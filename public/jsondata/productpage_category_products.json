@@ -1,0 +1,119 @@
+[
+  {
+    "category": {
+      "id": 1,
+      "name": "Giống cây táo"
+    },
+    "products": [
+      {
+        "id": 1,
+        "name": "Táo Thái Xanh",
+        "description": "Description",
+        "img": "https://trungtamcaygiongtiengiang.com/watermark/product/540x540x1/upload/product/z5353502009320c2555d812b8b632f254cdee9acec48c4-4104.jpg",
+        "price": 100000
+      },
+      {
+        "id": 2,
+        "name": "Táo Tàu PANZAO",
+        "description": "Description",
+        "img": "https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z46650615315847997236352d5434ff511bcacacefe46f-8829.jpg",
+        "price": 600000
+      }
+    ]
+  },
+  {
+    "category": {
+      "id": 2,
+      "name": "Giống cây CHERRY"
+    },
+    "products": [
+      {
+        "id": 3,
+        "name": "Cherry Brazil",
+        "description": "Description",
+        "img": "https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/1accc77c-2dcc-4bb0-b2b9-8e363e553ff4-4020.jpeg",
+        "price": 100000
+      },
+      {
+        "id": 4,
+        "name": "Cherry Brazil",
+        "description": "Description",
+        "img": "https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z3930098302415d8e2d346f9b3af60eebbb86ccc109bc3-2374.jpg",
+        "price": 600000
+      }
+    ]
+  },
+  {
+    "category": {
+      "id": 3,
+      "name": "Giống cây dừa"
+    },
+    "products": [
+      {
+        "id": 5,
+        "name": "Dừa Mã Lai",
+        "description": "Description",
+        "img": "https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/09579487-1735-ban-dat-tho-cu-dat-o-huyen-ben-luc-7131.jpg",
+        "price": 60000
+      }
+    ]
+  },
+  {
+    "category": {
+      "id": 4,
+      "name": "Giống cây nho"
+    },
+    "products": [
+      {
+        "id": 6,
+        "name": "Nho ngon tay đen",
+        "description": "Description",
+        "img": "https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z468507245738775565b9433db55df9e7e1ab61c0d949a-2025.jpg",
+        "price": 120000
+      },
+      {
+        "id": 7,
+        "name": "Nho thân gỗ tứ quý",
+        "description": "Description",
+        "img": "https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/nho-than-go-tu-quy-compressed-1-9931.jpg",
+        "price": 1000000
+      },
+      {
+        "id": 8,
+        "name": "Nho thân gỗ 12 vụ",
+        "description": "Description",
+        "img": "https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z37752664232773904b19f6a393f3b257ed0457fc93a06-8932.jpg",
+        "price": 1000000
+      },
+      {
+        "id": 9,
+        "name": "Nho thân gỗ trái vàng",
+        "description": "Description",
+        "img": "https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z39321123442277a8f7adf4b5e68da010534ad833af4e2-1111.jpg",
+        "price": 1200000
+      }
+    ]
+  },
+  {
+    "category": {
+      "id": 5,
+      "name": "Giống cây vú sữa"
+    },
+    "products": [
+      {
+        "id": 10,
+        "name": "Vú sữa MICA",
+        "description": "Description",
+        "img": "https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z468507245738775565b9433db55df9e7e1ab61c0d949a-2025.jpg",
+        "price": 120000
+      },
+      {
+        "id": 12,
+        "name": "Vú sữa hoàng kim",
+        "description": "Description",
+        "img": "https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z3842389946381bdfb23d6b66c70ac5c233deb0b31e59d-8742.jpg",
+        "price": 100000
+      }
+    ]
+  }
+]

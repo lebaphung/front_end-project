@@ -1,4 +1,3 @@
-import "./productDetail.css";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
 import React from "react";
@@ -17,16 +16,19 @@ export function ProductDetail() {
     const navigate = useNavigate();
     return (
         <div className="container">
-            <div>
-                <button onClick={() => navigate(-1)} className={"btn btn-primary"}>BACK</button>
+            <div className={"row d-flex justify-content-start m-3"}>
+                <button onClick={() => navigate(-1)} className={"col-1 btn btn-outline-primary"}>Quay lại</button>
             </div>
-            <div className="card">
-                <div>hehe</div>
+            <div className="row border rounded m-3">
                 {product && (
                     <div>
                         <h2>{product.name}</h2>
                         <p>{product.description}</p>
-                        <img src={product.img} alt={product.name} />
+
+                        <div>
+                            <img src={product.img}
+                                 className={"w-25 h-25 border rounded-3 hover-scale"}/>
+                        </div>
                     </div>
                 )}
             </div>
