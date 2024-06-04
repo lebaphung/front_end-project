@@ -1,0 +1,6 @@
+export const LOAD_PRODUCTS = "products/load"
+export const SEARCH_PRODUCTS = "products/search"
+export const FILTER_PRODUCTS = "products/filter"
+export const ADD_CART = "cart/add"
+export const REMOVE_CART = "cart/remove"
+export const CHANGE_QUANTITY_CART = "cart/changeQuantity"

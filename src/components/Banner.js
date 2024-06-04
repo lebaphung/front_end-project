@@ -3,7 +3,6 @@ import './style.css';
 import React, { useState, useEffect } from 'react';
 function Banner() {
     const [bannerItems, setBannerItems] = useState([]);
-
     useEffect(() => {
         fetch('/jsondata/banner_items.json')
             .then(response => response.json())
@@ -13,7 +12,7 @@ function Banner() {
     return (
         <Carousel data-bs-theme="light" className="custom-carousel" interval={3000}>
             {bannerItems.map((item, index) => (
-                <Carousel.Item>
+                <Carousel.Item key={index}>
                     <img
                         className="d-block w-100"
                         src={item.path}
