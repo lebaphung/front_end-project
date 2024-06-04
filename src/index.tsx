@@ -3,26 +3,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { store } from './store/Store';
-import { Provider } from 'react-redux';
-import { RouterProvider } from 'react-router-dom';
-import { router } from './router/web';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Footer from './component/Footer';
-import Header from './component/Header';
-import { BrowserRouter } from 'react-router-dom';
+import {Provider} from "react-redux";
+import store from "./redux/Store";
+import Home from "./components/Home";
+import {BrowserRouter, RouterProvider} from "react-router-dom";
+import {router} from "./router/web";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
     <React.StrictMode>
-        <Provider store={store}>
-                <Header />
-                <RouterProvider router={router} />
-                <Footer />
-        </Provider>
+            <Provider store={store}>
+                    <BrowserRouter>
+                            <App />
+                    </BrowserRouter>
+            </Provider>
     </React.StrictMode>
 );
-
 reportWebVitals();

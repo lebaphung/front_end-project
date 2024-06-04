@@ -1,9 +1,19 @@
 .hover-link:hover {
     color: #ff9f1a;
 }
-.hover-link:active {
+.active-link {
     color: #ff9f1a;
+    font-weight: bold;
+    font-size: large;
+    text-decoration-line: none;
 }
+.link{
+    color: #282c34;
+    font-weight: bold;
+    font-size: large;
+    text-decoration-line: none;
+}
+
 .hover-scale:hover {
     transform: scale(1.08);
     transition: transform 0.6s;
