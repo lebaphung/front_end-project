@@ -11,6 +11,7 @@ import {Outlet, Route, RouterProvider, Routes} from "react-router-dom";
 import {router} from "./router/web";
 import Home from "./components/Home";
 import ProductList from "./components/ProductList";
+import VeChungToi from "./components/VeChungToi";
 
 function App() {
     // lấy dữ liệu từ product.json
@@ -37,6 +38,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/list-product" element={<ProductList />}/>
+                <Route path="/vct" element={<VeChungToi/>}/>
                 {/*<Route path="/:id" element={<ProductDetail/>} loader={loadProduct}/>*/}
             </Routes>
             <Footer />

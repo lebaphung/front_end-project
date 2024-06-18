@@ -1,0 +1,31 @@
+/*Phần đầu*/
+.text_italic {
+    font-size: 18px;
+    font-style: italic;
+}
+.text_bold {
+    font-size: 18px;
+    font-weight: bold;
+}
+.text_green{
+    font-size: 30px;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+.border_bottom {
+    border-bottom: 1px solid #d9d6d6;
+    margin-left: 25vh;
+    margin-right: 25vh;
+    margin-bottom: 3vh;
+}
+/*Phần 2*/
+.content_2 {
+    border-bottom: 1px solid #d9d6d6;
+    margin-left: 25vh;
+    margin-right: 25vh;
+    margin-bottom: 3vh;
+    display: flex;
+}
