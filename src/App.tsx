@@ -12,6 +12,7 @@ import {router} from "./router/web";
 import Home from "./components/Home";
 import ProductList from "./components/ProductList";
 import VeChungToi from "./components/VeChungToi";
+import {SendMailDemo} from "./service.mail/DemoSendEmail";
 
 function App() {
     // lấy dữ liệu từ product.json
@@ -23,7 +24,7 @@ function App() {
             .catch(error => console.error('Lỗi khi tải dữ liệu:', error));
     }, []);
     //
-    console.log("product for load",products)
+    console.log("product for load", products)
     const dispatch = useDispatch();
     // bắn action loadProducs
     useEffect(() => {
@@ -34,14 +35,15 @@ function App() {
 
     return (
         <div>
-            <Header />
+            <Header/>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/list-product" element={<ProductList />}/>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/list-product" element={<ProductList/>}/>
                 <Route path="/vct" element={<VeChungToi/>}/>
+                <Route path="/sendMailDemo" element={<SendMailDemo/>}/>
                 {/*<Route path="/:id" element={<ProductDetail/>} loader={loadProduct}/>*/}
             </Routes>
-            <Footer />
+            <Footer/>
         </div>
     );
 }
