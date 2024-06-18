@@ -12,7 +12,14 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.background-image-vct {
+  background-image: url('https://trungtamcaygiongtiengiang.com/assets/images/icon01.png'); /* Đường dẫn tới hình ảnh của bạn */
+  background-repeat: no-repeat;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding-bottom: 70px;
+  background-position: center;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
