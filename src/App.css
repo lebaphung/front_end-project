@@ -17,8 +17,13 @@
   background-repeat: no-repeat;
   margin-bottom: 1rem;
   text-align: center;
-  padding-bottom: 70px;
-  background-position: center;
+  background-position-x: 50%;
+  background-position-y: 100%;
+  background-origin: padding-box;
+  /*background-position: center;*/
+  background-size: auto;
+  margin-bottom: 24px;
+  padding-bottom: 30px;
 }
 .App-header {
   background-color: #282c34;
