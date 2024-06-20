@@ -14,6 +14,7 @@ import ProductList from "./components/ProductList";
 import VeChungToi from "./components/VeChungToi";
 import {SendMailDemo} from "./service.mail/DemoSendEmail";
 import ContactUs from "./components/ContactUs";
+import Cart from "./components/Cart/Cart";
 
 function App() {
     // lấy dữ liệu từ product.json
@@ -42,6 +43,7 @@ function App() {
                 <Route path="/list-product" element={<ProductList/>}/>
                 <Route path="/vct" element={<VeChungToi/>}/>
                 <Route path="contact" element={<ContactUs/>}/>
+                <Route path="/cart" element={<Cart/>}/>
                 <Route path="/sendMailDemo" element={<SendMailDemo/>}/>
                 {/*<Route path="/:id" element={<ProductDetail/>} loader={loadProduct}/>*/}
             </Routes>

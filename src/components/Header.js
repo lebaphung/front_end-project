@@ -91,6 +91,10 @@ export default function Header() {
                     {location.pathname === '/contact' && (<a className={"active-link "} href="/contact">Liên hệ</a>)}
                     {location.pathname !== '/contact' && (
                         <a className={"link hover-link "} href="/contact">Liên hệ</a>)}
+
+                    {location.pathname === '/cart' && (<a className={"active-link "} href="/contact">Giỏ hàng</a>)}
+                    {location.pathname !== '/cart' && (
+                        <a className={"link hover-link "} href="/cart">Giỏ hàng</a>)}
                 </div>
             </nav>
         </header>
