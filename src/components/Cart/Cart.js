@@ -9,7 +9,7 @@ const Cart = () => {
                     <table class="table">
                         <thead>
                         <tr>
-                            <th scope="col">Sản phẩm</th>
+                    np       <th scope="col">Sản phẩm</th>
                             <th scope="col">Tên sản phẩm</th>
                             <th scope="col">Đơn giá</th>
                             <th scope="col">Số lượng</th>

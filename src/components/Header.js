@@ -1,5 +1,7 @@
 import './style.css'
 import React, {useEffect, useState} from "react";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faShoppingBag} from '@fortawesome/free-solid-svg-icons'
 // npm install react-fast-marquee
 import Marquee from "react-fast-marquee";
 // npm install react-bootstrap bootstrap
@@ -8,6 +10,7 @@ import {Dropdown} from "react-bootstrap";
 import {BrowserRouter, Link, useLocation} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {searchProducts} from "../redux/Action";
+import Cart from "./Cart/Cart";
 
 export default function Header() {
     const location = useLocation();
@@ -92,9 +95,21 @@ export default function Header() {
                     {location.pathname !== '/contact' && (
                         <a className={"link hover-link "} href="/contact">Liên hệ</a>)}
 
-                    {location.pathname === '/cart' && (<a className={"active-link "} href="/contact">Giỏ hàng</a>)}
-                    {location.pathname !== '/cart' && (
-                        <a className={"link hover-link "} href="/cart">Giỏ hàng</a>)}
+                    {/*{location.pathname === '/cart' && (<a className={"active-link "} href="/contact">Giỏ hàng</a>)}*/}
+                    {/*{location.pathname !== '/cart' && (*/}
+
+                        {/*// <a className={"link hover-link "} href="/cart">Giỏ hàng</a>*/}
+
+                        <Link to="/cart" className="cart-icon">
+                            <FontAwesomeIcon icon={faShoppingBag} className="text-primary me-4 fa-2x text-center"/>
+                           <div className="cart-quantity">
+
+                                <span>3</span>
+                           </div>
+
+                        </Link>
+
+                    {/*)}*/}
                 </div>
             </nav>
         </header>
