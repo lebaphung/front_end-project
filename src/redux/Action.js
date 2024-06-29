@@ -2,7 +2,7 @@ import {
     ADD_CART,
     CHANGE_QUANTITY_CART,
     FILTER_PRODUCTS,
-    LOAD_PRODUCTS,
+    LOAD_PRODUCTS, PAYMENT,
     REMOVE_CART,
     SEARCH_PRODUCTS
 } from "./ActionType";
@@ -40,6 +40,12 @@ export const removeCart = (productId) => (
 export const changeQuantityCart = (productId, quantity) => (
     {
         type: CHANGE_QUANTITY_CART,
-        payload: {quantity}
+        payload: {productId, quantity}
+    }
+)
+export const payment = (fullName, phoneNumber, email, address, note) => (
+    {
+        type: PAYMENT,
+        payload: {fullName, phoneNumber, email, address, note}
     }
 )

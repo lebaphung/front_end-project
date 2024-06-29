@@ -7,8 +7,7 @@ const initialState = {
     products: [],
     filter: "ALL",
     search: "",
-    cart: loadCart(),
-    subscribe: false
+    cart: loadCart()
 }
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -40,6 +39,7 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 filter: action.payload.filter
             }
+
         default:
             return state;
     }
