@@ -1,4 +1,3 @@
-import {useSelector} from "react-redux";
 import "./style.css";
 import React, {useEffect, useState} from 'react';
 import {Link, useOutletContext} from 'react-router-dom';
@@ -9,16 +8,17 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Banner from './Banner'
 import {formatCurrency} from '../FormatCurrency';
-import Carousel from "react-bootstrap/Carousel";
 
 const Home = () => {
+    const urlAPI = "https://json-server-api-tv8h.onrender.com/api/products"
     const [topSellingProducts, setTopSellingProducts] = useState([]);
     const [recentProducts, setRecentProducts] = useState([]);
     const [categorySixProducts, setCategorySixProducts] = useState([]);
     useEffect(() => {
-        fetch('/jsondata/products.json')
+        fetch(urlAPI)
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 // Sort by amountSold to get top selling products
                 const topSelling = [...data].sort((a, b) => b.amountSold - a.amountSold).slice(0, 5);
                 setTopSellingProducts(topSelling);

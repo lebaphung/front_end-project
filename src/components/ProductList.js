@@ -3,7 +3,6 @@ import "./style.css";
 import React, {useEffect, useState} from 'react';
 import {Link, useOutletContext} from 'react-router-dom';
 import {formatCurrency} from '../FormatCurrency';
-import {Dropdown} from "react-bootstrap";
 import {filterProducts, searchProducts} from "../redux/Action";
 
 const ProductList = () => {
