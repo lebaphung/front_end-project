@@ -33,6 +33,7 @@ const rootReducer = (state = initialState, action) => {
         case SEARCH_PRODUCTS:
             return {
                 ...state,
+                filter: 'ALL',
                 search: action.payload.keyword
             };
         case FILTER_PRODUCTS:
