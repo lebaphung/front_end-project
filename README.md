@@ -40,6 +40,24 @@ Instead, it will copy all the configuration files and the transitive dependencie
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
 ## Learn More
+### GET/POST/PATCH/DELETE sử dụng JSON-SERVER API.
++ Hiện tại dữ liệu đang có 3 bảng : banner_items, products, categories.
+Vi dụ cho trường hợp của products:
+##1.1. LẤY TẤT CẢ SẢN PHẨM : http://localhost:3000/api/products
+
+##1.2. FILTER SẢN PHẨM: Ví dụ theo tên & giá: http://localhost:3000/api/products?price=100000&name=Cherry Brazil
+
+##1.3. LỌC SẢN PHẨM THEO KHOẢNG GIÁ (Thêm hậu tố lte) Ví dụ lấy giá trong khoảng 50k -> 150k. http://localhost:3000/api/products?price_lte=50000&price_lte=150000
+
+##1.4. SẮP XẾP GIÁ BÁN GIẢM DẦN : http://localhost:3000/api/products?_sort=price&_order=desc
+
+##1.5. TÌM KIẾM SẢN PHẨM : http://localhost:3000/api/products?q=Cherry
+
+##1.6. PHÂN TRANG. Lấy trang đầu tiên với 8 sản phẩm : http://localhost:3000/api/products?_page=1&_limit=8
+##1.7. Phương thức POST: làm việc với :http://localhost:3000/api/products (bỏ trường creacteAdded vì api tự thêm)
+
+
+
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
