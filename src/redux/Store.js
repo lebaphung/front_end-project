@@ -5,4 +5,6 @@ const store = configureStore({
     reducer: rootReducer, // Truyền rootReducer vào đây
 });
 
+console.log(store.getState())
+
 export default store;
