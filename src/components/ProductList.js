@@ -1,11 +1,12 @@
 import {useDispatch, useSelector} from "react-redux";
 import "./style.css";
 import React, {useEffect, useState} from 'react';
-import {Link, useOutletContext} from 'react-router-dom';
+import {Link, useLocation, useOutletContext} from 'react-router-dom';
 import {formatCurrency} from '../FormatCurrency';
-import {Dropdown} from "react-bootstrap";
 import {filterProducts, searchProducts} from "../redux/Action";
 import styles from './ProductList.module.css';
+import Header from "./Header";
+import Search from "./Search";
 
 const ProductList = () => {
     const dispatch = useDispatch();
@@ -50,41 +51,23 @@ const ProductList = () => {
         pageNumbers.push(i);
     }
     //
+    const location = useLocation();
     return (
         <div>
-            <div className={"d-flex justify-content-center my-4"}>
-                <input
-                    className="form-control w-50"
-                    type="search"
-                    placeholder="Nhập để tìm cây giống..."
-                    aria-label="Search"
-                    value={search}
-                    onChange={(e) => handleSearchChange(e.target.value)}
-                />
-                <select className={"text-center rounded fw-bold bg-success text-white"}
-                        value={currentFilter}//1,2,3,.... else all
-                        onChange={(e) => handleFilter(e.target.value)} //bắn action
-                >
-                    <option value="ALL">Tất cả</option>
-                    {categories.map((c, index) => (
-                        <option value={c.id}>{c.name}</option>
-                    ))}
-                </select>
-            </div>
             <div className="container mt-5">
                 <div className="mb-5 row">
                     {currentProducts.map(product => (
                         <div key={product.id} className={"p-2 col-3 text-center"}>
-                            <div className={"p-2 border rounded-3"}>
+                            <div className={"p-2"}>
                                 <Link className={"text-decoration-none text-dark"}
                                       to={`/product/${product.id}`}>
-                                    <div>
+                                    <div className={"p-2"}>
                                         <img
                                             src={product.img}
                                             className={"w-100 h-100 border rounded-3 hover-scale"}
                                             alt={product.name}/>
                                     </div>
-                                    <h3>{product.name}</h3>
+                                    <h3 className={"hover-name"}>{product.name}</h3>
                                     <div className={"d-flex justify-content-center"}>Giá:&nbsp;
                                         <p className={"text-danger fw-bold"}>{formatCurrency(product.price)}</p>
                                     </div>

@@ -1,4 +1,3 @@
-import {useSelector} from "react-redux";
 import "./style.css";
 import React, {useEffect, useState} from 'react';
 import {Link, useOutletContext} from 'react-router-dom';
@@ -9,16 +8,18 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Banner from './Banner'
 import {formatCurrency} from '../FormatCurrency';
-import Carousel from "react-bootstrap/Carousel";
+import Header from "./Header";
 
 const Home = () => {
+    const urlAPI = "https://json-server-api-tv8h.onrender.com/api/products"
     const [topSellingProducts, setTopSellingProducts] = useState([]);
     const [recentProducts, setRecentProducts] = useState([]);
     const [categorySixProducts, setCategorySixProducts] = useState([]);
     useEffect(() => {
-        fetch('/jsondata/products.json')
+        fetch(urlAPI)
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 // Sort by amountSold to get top selling products
                 const topSelling = [...data].sort((a, b) => b.amountSold - a.amountSold).slice(0, 5);
                 setTopSellingProducts(topSelling);
@@ -45,18 +46,22 @@ const Home = () => {
 
     return (
         <div>
-            <Banner/>
+           <div className={"container"}>
+               <Banner/>
+           </div>
             {/* Danh sách sản phẩm phân loại theo bán ra*/}
             <div className="container mt-5">
                 <div className="mb-5">
-                    <h2 className={"p-3 text-center"}>Giống cây bán chạy nhất</h2>
+                    <div className="vct_title text-center mt-5">
+                        <h2 className={"background-image-vct"}>Giống cây bán chạy nhất</h2>
+                    </div>
                     <Slider {...settings}>
                         {topSellingProducts.map(product => (
                             <div key={product.id} className={"p-2 text-center"}>
-                                <div className={"p-2 border rounded-3"}>
+                                <div className={"p-2"}>
                                     <Link className={"text-decoration-none text-dark"}
                                           to={`/product/${product.id}`}>
-                                        <div>
+                                        <div className={"p-2"}>
                                             <img
                                                 src={product.img}
                                                 className={"w-100 h-100 border rounded-3 hover-scale"}
@@ -75,15 +80,17 @@ const Home = () => {
                 </div>
                 {/* Theo date */}
                 <div className="mb-5">
-                    <h2 className={"p-3 text-center"}>Giống cây mới</h2>
+                    <div className="vct_title text-center mt-5">
+                        <h2 className={"background-image-vct"}>Giống cây mới</h2>
+                    </div>
                     <Slider {...settings}>
                         {recentProducts.map(product => (
                             <div key={product.id} className={"p-2 text-center"}>
                                 {/* Hiển thị thông tin sản phẩm */}
-                                <div className={"p-2 border rounded-3"}>
+                                <div className={"p-2"}>
                                     <Link className={"text-decoration-none text-dark"}
                                           to={`/product/${product.id}`}>
-                                        <div>
+                                        <div className={"p-2"}>
                                             <img
                                                 src="https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z468507245738775565b9433db55df9e7e1ab61c0d949a-2025.jpg"
                                                 //{product.img}
@@ -103,15 +110,17 @@ const Home = () => {
                 </div>
                 {/*    độc lạ*/}
                 <div className="mb-5">
-                    <h2 className={"p-3 text-center"}>Giống cây độc lạ</h2>
+                    <div className="vct_title text-center mt-5">
+                        <h2 className={"background-image-vct"}>Giống cây độc lạ</h2>
+                    </div>
                     <Slider {...settings}>
                         {categorySixProducts.map(product => (
                             <div key={product.id} className={"p-2 text-center"}>
                                 {/* Hiển thị thông tin sản phẩm */}
-                                <div className={"p-2 border rounded-3"}>
+                                <div className={"p-2"}>
                                     <Link className={"text-decoration-none text-dark"}
                                           to={`/product/${product.id}`}>
-                                        <div>
+                                        <div className={"p-2"}>
                                             <img
                                                 src="https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z468507245738775565b9433db55df9e7e1ab61c0d949a-2025.jpg"
                                                 //{product.img}

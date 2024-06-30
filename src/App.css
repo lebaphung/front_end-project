@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 .App {
   text-align: center;
 }
@@ -11,6 +12,14 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+*{
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+
+
 }
 .background-image-vct {
   background-image: url('https://trungtamcaygiongtiengiang.com/assets/images/icon01.png'); /* Đường dẫn tới hình ảnh của bạn */
@@ -47,4 +56,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+.cart-icon {
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+
+}
+.cart-quantity {
+
+   background-color: #e63946;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  border-radius: 50%;
+
+
 }
