@@ -1,3 +1,4 @@
+
 import {useDispatch, useSelector} from "react-redux";
 import "./style.css";
 import React, {useEffect, useState} from 'react';
@@ -44,6 +45,18 @@ const ProductList = () => {
     const handleFilter = (filter) => {
         dispatch(filterProducts(filter))
     }
+    // Phân trang
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage] = useState(8); // số sản phẩm hiển thị
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
+        pageNumbers.push(i);
+    }
+    //
     const location = useLocation();
     return (
         <div>
@@ -53,7 +66,7 @@ const ProductList = () => {
                     <div className="vct_title text-center mt-5">
                         {/*<h2 className={"background-image-vct"}>Giống cây ???</h2>*/}
                     </div>
-                    {products.map(product => (
+                    {currentProducts.map(product => (
                         <div key={product.id} className={"p-2 col-3 text-center"}>
                             <div className={"p-2"}>
                                 <Link className={"text-decoration-none text-dark"}
@@ -74,6 +87,17 @@ const ProductList = () => {
                         </div>
                     ))}
                 </div>
+                {/*Phân Trang*/}
+                <ul className="pagination d-flex justify-content-center">
+                    {pageNumbers.map(number => (
+                        <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+                            <button onClick={() => paginate(number)} className="page-link">
+                                {number}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+                {/**/}
             </div>
         </div>
     )
