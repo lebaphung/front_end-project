@@ -28,7 +28,7 @@ const Home = () => {
                 const recent = [...data].sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)).slice(0, 5);
                 setRecentProducts(recent);
 
-                // Filter products by categoryId 6
+                // CategoryFilter products by categoryId 6
                 const categorySix = data.filter(product => product.categoryId === 0);
                 setCategorySixProducts(categorySix);
             })

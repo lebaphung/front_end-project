@@ -1,4 +1,4 @@
-import {ADD_CART, FILTER_PRODUCTS, LOAD_PRODUCTS, SEARCH_PRODUCTS} from "./ActionType";
+import {ADD_CART, FILTER_PRODUCTS, LOAD_PRODUCTS, PRICE_FILTER, SEARCH_PRODUCTS, SORT} from "./ActionType";
 
 const loadCart = () => {
     return JSON.parse(localStorage.getItem('cart')) ?? [];
@@ -7,6 +7,9 @@ const initialState = {
     products: [],
     filter: "ALL",
     search: "",
+    sort: "",
+    startPrice: 0,
+    endPrice: null,
     cart: loadCart(),
 
 }
@@ -41,11 +44,22 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 filter: action.payload.filter
             }
-
+        case SORT:
+            return {
+                ...state,
+                sort: action.payload.typeSort
+            };
+        case PRICE_FILTER:
+            alert('PRICE_FILTER action received:', action.payload);
+            return {
+                ...state,
+                startPrice: action.payload.startPrice || state.startPrice,
+                endPrice: action.payload.endPrice || state.endPrice
+            };
         case ADD_CART:
             return {
                 ...state,
-                status : action.payload.cart
+                status: action.payload.cart
 
 
             }
@@ -54,9 +68,6 @@ const rootReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-
-
 
 
 export default rootReducer;

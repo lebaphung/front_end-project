@@ -12,7 +12,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {searchProducts} from "../redux/Action";
 import Cart from "./Cart/Cart";
 import Search from "./Search";
-import Filter from "./Filter";
+import CategoryFilter from "./CategoryFilter";
 // npm install react-icons
 import { PiList } from "react-icons/pi";
 import { FaShoppingCart } from "react-icons/fa";
@@ -85,7 +85,7 @@ export default function Header() {
                             <a className={"link bg-success"} style={{padding: "10px 5px"}} href="/list-product">Danh sách sản phẩm <PiList/></a>
                         )}
                         <div className="filter-dropdown">
-                            <Filter/>
+                            <CategoryFilter/>
                         </div>
                     </div>
                     {location.pathname === '/' && (<a className={"active-link "} href="/">Trang chủ</a>)}

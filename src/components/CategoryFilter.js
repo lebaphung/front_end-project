@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {filterProducts, searchProducts} from "../redux/Action";
 import {useLocation, useNavigate} from "react-router-dom";
 
-export default function Filter() {
+export default function CategoryFilter() {
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -22,7 +22,7 @@ export default function Filter() {
     });
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch('https://json-server-api-tv8h.onrender.com/api/categories')
+        fetch('/jsondata/categories.json')
             .then(response => response.json())
             .then(data => setCategories(data))
             .catch(error => console.error('Error fetching banner items:', error));
@@ -35,7 +35,7 @@ export default function Filter() {
     return (
         <div className={"rounded fw-bold bg-light p-3"}>
             {categories.map((c, index) => (
-                <div className={"mb-2  hover-category"} style={{cursor: "pointer"}}
+                <div key={c.id} className={"mb-2  hover-category"} style={{cursor: "pointer"}}
                     onClick={(e) => handleFilter(c.id)} //bắn action
                 >{c.name}</div>
             ))}
