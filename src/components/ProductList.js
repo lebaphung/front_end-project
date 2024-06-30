@@ -25,7 +25,7 @@ const ProductList = () => {
 
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch('/jsondata/categories.json')
+        fetch('https://json-server-api-tv8h.onrender.com/api/products')
             .then(response => response.json())
             .then(data => setCategories(data))
             .catch(error => console.error('Error fetching banner items:', error));
