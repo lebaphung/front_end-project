@@ -5,9 +5,10 @@ const loadCart = () => {
 }
 const initialState = {
     products: [],
+    initSortProducts: [],
     filter: "ALL",
     search: "",
-    sort: "",
+    sort: "default",
     startPrice: 0,
     endPrice: null,
     cart: loadCart(),
@@ -31,7 +32,8 @@ const rootReducer = (state = initialState, action) => {
             }
             return {
                 ...state,
-                products: out
+                products: out,
+                initSortProducts: products
             };
         case SEARCH_PRODUCTS:
             return {
@@ -45,12 +47,32 @@ const rootReducer = (state = initialState, action) => {
                 filter: action.payload.filter
             }
         case SORT:
-            return {
-                ...state,
-                sort: action.payload.typeSort
-            };
+            if(action.payload.typeSort=='default'){
+                return {
+                    ...state,
+                    sort: action.payload.typeSort,
+                    products: state.initSortProducts
+                };
+            }else{
+                const sortedProducts = [...state.products].sort((a, b) => {
+                    if (action.payload.typeSort === 'price_asc') {
+                        return a.price - b.price;
+                    } else if (action.payload.typeSort === 'price_desc') {
+                        return b.price - a.price;
+                    } else if (action.payload.typeSort === 'newest') {
+                        return new Date(b.dateAdded) - new Date(a.dateAdded);
+                    } else if (action.payload.typeSort === 'bestselling') {
+                        return b.amountSold - a.amountSold;
+                    }
+                    return 0;
+                });
+                return {
+                    ...state,
+                    sort: action.payload.typeSort,
+                    products: sortedProducts
+                };
+            }
         case PRICE_FILTER:
-            alert('PRICE_FILTER action received:', action.payload);
             return {
                 ...state,
                 startPrice: action.payload.startPrice || state.startPrice,

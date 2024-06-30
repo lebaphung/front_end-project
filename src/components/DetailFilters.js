@@ -9,6 +9,7 @@ export default function DetailFilters() {
     const [endPrice, setEndPrice] = useState('');
     const [typeSort, setTypeSort] = useState('');
     const dispatch = useDispatch();
+    const [activeSort, setActiveSort] = useState('default'); // Track the active sort type
 
     const handleRangePriceFilter = () => {
         const start = startPrice !== '' ? Number(startPrice) : 0;
@@ -23,8 +24,10 @@ export default function DetailFilters() {
     };
 
 
-    const handleSort = () => {
-        dispatch(sort(typeSort));
+    const handleSort = (value) => {
+        setTypeSort(value)
+        setActiveSort(value);//active button gui
+        dispatch(sort(value));
     };
 
     return (
@@ -55,12 +58,26 @@ export default function DetailFilters() {
                 <div className="sort-group h-50 bg-light">
                     <div className="sort-item">Sắp xếp theo:</div>
                     <div className="sort-item">
-                        <button type="button" className="btn btn-outline-success" onClick={() => setTypeSort('newest')}>
+                        <button type="button"
+                                className={`btn ${activeSort === 'default' ? 'btn-success' : 'btn-outline-success'}`}
+                                onClick={(e) => handleSort("default")}
+                        >
+                            Mặc định
+                        </button>
+                    </div>
+                    <div className="sort-item">
+                        <button type="button"
+                                className={`btn ${activeSort === 'newest' ? 'btn-success' : 'btn-outline-success'}`}
+                                onClick={(e) => handleSort("newest")}
+                        >
                             Mới nhất
                         </button>
                     </div>
                     <div className="sort-item">
-                        <button type="button" className="btn btn-outline-success" onClick={() => setTypeSort('bestselling')}>
+                        <button type="button"
+                                className={`btn ${activeSort === 'bestselling' ? 'btn-success' : 'btn-outline-success'}`}
+                                onClick={(e) => handleSort("bestselling")}
+                        >
                             Bán chạy
                         </button>
                     </div>
@@ -69,9 +86,9 @@ export default function DetailFilters() {
                             className="form-select"
                             aria-label="Default select example"
                             value={typeSort}
-                            onChange={(e) => setTypeSort(e.target.value)}
+                            onChange={(e) => handleSort(e.target.value)}
                         >
-                            <option value="">Giá</option>
+                            <option value="default">Giá</option>
                             <option value="price_asc">Giá: Thấp đến cao</option>
                             <option value="price_desc">Giá: Cao đến thấp</option>
                         </select>
