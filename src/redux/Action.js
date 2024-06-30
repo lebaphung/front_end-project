@@ -2,9 +2,9 @@ import {
     ADD_CART,
     CHANGE_QUANTITY_CART,
     FILTER_PRODUCTS,
-    LOAD_PRODUCTS, PAYMENT,
+    LOAD_PRODUCTS, PAYMENT, PRICE_FILTER,
     REMOVE_CART,
-    SEARCH_PRODUCTS
+    SEARCH_PRODUCTS, SORT
 } from "./ActionType";
 
 export const loadProducts = (data) => (
@@ -47,5 +47,17 @@ export const payment = (fullName, phoneNumber, email, address, note) => (
     {
         type: PAYMENT,
         payload: {fullName, phoneNumber, email, address, note}
+    }
+)
+export const sort = (typeSort) => (
+    {
+        type: SORT,
+        payload: {typeSort}
+    }
+)
+export const priceFilter = (startPrice, endPrice) => (
+    {
+        type: PRICE_FILTER,
+        payload: {startPrice, endPrice}
     }
 )

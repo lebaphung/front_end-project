@@ -1,32 +1,38 @@
+
 import {useDispatch, useSelector} from "react-redux";
 import "./style.css";
 import React, {useEffect, useState} from 'react';
 import {Link, useLocation, useOutletContext} from 'react-router-dom';
 import {formatCurrency} from '../FormatCurrency';
 import {filterProducts, searchProducts} from "../redux/Action";
-import styles from './ProductList.module.css';
 import Header from "./Header";
 import Search from "./Search";
+import DetailFilters from "./DetailFilters";
 
 const ProductList = () => {
     const dispatch = useDispatch();
     const [search, setSearch] = useState("");
     const currentFilter = useSelector(state => state.filter)
+    const startPrice = useSelector(state => state.startPrice)
+    const endPrice = useSelector(state => state.endPrice)
     const products = useSelector(state => {
         const products = state.products;
         const filter = state.filter;
         const search = state.search;
         return products.filter((p) => {
-            const matchsFilter = (filter === "ALL") || (filter !== "ALL" && filter == p.categoryId)//filter co the la str/number nen ==
-            const matchsSearch = p.name.toLowerCase().includes(search)
-            return matchsFilter && matchsSearch;
-        })
+            const matchsFilter = (filter === "ALL") || (filter !== "ALL" && filter == p.categoryId); // filter can be str/number so == is used
+            const matchsSearch = p.name.toLowerCase().includes(search);
+            const matchsStartPrice = startPrice ? (p.price >= startPrice) : true;
+            const matchsEndPrice = endPrice ? (p.price <= endPrice) : true;
+
+            return matchsFilter && matchsSearch && matchsStartPrice && matchsEndPrice;
+        });
     });
     const cart = useSelector(state => state.cart);
 
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch('/jsondata/categories.json')
+        fetch('https://json-server-api-tv8h.onrender.com/api/products')
             .then(response => response.json())
             .then(data => setCategories(data))
             .catch(error => console.error('Error fetching banner items:', error));
@@ -54,8 +60,12 @@ const ProductList = () => {
     const location = useLocation();
     return (
         <div>
-            <div className="container mt-5">
+            <div className="container mt-2">
+                <DetailFilters/>
                 <div className="mb-5 row">
+                    <div className="vct_title text-center mt-5">
+                        {/*<h2 className={"background-image-vct"}>Giống cây ???</h2>*/}
+                    </div>
                     {currentProducts.map(product => (
                         <div key={product.id} className={"p-2 col-3 text-center"}>
                             <div className={"p-2"}>
@@ -87,7 +97,7 @@ const ProductList = () => {
                         </li>
                     ))}
                 </ul>
-            {/**/}
+                {/**/}
             </div>
         </div>
     )

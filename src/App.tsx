@@ -11,7 +11,7 @@ import VeChungToi from "./components/VeChungToi";
 import {SendMailDemo} from "./service.mail/DemoSendEmail";
 import ContactUs from "./components/ContactUs";
 import Cart from "./components/Cart/Cart";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
     // Lấy dữ liệu từ file json => đưa vào mảng.
     const [products, setProducts] = useState([]);

@@ -64,3 +64,46 @@
 .link-container:hover .filter-dropdown {
     display: block;
 }
+.price-filter-group{
+    border: 1px solid rgba(0, 0, 0, .09);
+    margin: 1.25rem 0 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+.sort-group{
+    width: 100%;
+    display: flex;
+    margin: 1.25rem 10px 0;
+    padding: 10px;
+    border-radius: 3px;
+    align-items: center;
+}
+.sort-item{
+    margin-right: 10px;
+}
+.price-range-filter {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 1.25rem 0 .625rem;
+}
+.price-range-filter_input{
+    font-size: .75rem;
+    width: 5rem;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, .26);
+    border-radius: .125rem;
+    box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, .05);
+    box-sizing: border-box;
+    font-size: .8125rem;
+    height: 1.875rem;
+    outline: none;
+    padding-left: .3125rem;
+    width: 4.375rem;
+}
+.price-range-line{
+    background: #bdbdbd;
+    flex: 1;
+    height: 1px;
+    margin: 0 .625rem;
+}
