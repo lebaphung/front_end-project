@@ -24,6 +24,10 @@ export const router = createBrowserRouter([
             },{
                 path: 'vct',
                 element: <VeChungToi/>
+            },
+            {
+                path: 'Checkout',
+                element: <Checkout/>
             }
         ]
     }
