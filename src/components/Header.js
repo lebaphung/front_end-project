@@ -1,15 +1,15 @@
 import './style.css'
-import React, {useEffect, useState} from "react";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faShoppingBag} from '@fortawesome/free-solid-svg-icons'
+import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 // npm install react-fast-marquee
 import Marquee from "react-fast-marquee";
 // npm install react-bootstrap bootstrap
-import {Dropdown} from "react-bootstrap";
+import { Dropdown } from "react-bootstrap";
 // npm install react-router-dom
-import {BrowserRouter, Link, useLocation} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {searchProducts} from "../redux/Action";
+import { BrowserRouter, Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { searchProducts } from "../redux/Action";
 import Cart from "./Cart/Cart";
 import Search from "./Search";
 import CategoryFilter from "./CategoryFilter";
@@ -20,6 +20,7 @@ import { FaShoppingCart } from "react-icons/fa";
 export default function Header() {
     const location = useLocation();
     const [search, setSearch] = useState("");
+    const [isSticky, setIsSticky] = useState(false);
     const products = useSelector(state => {
         const products = state.products;
         const filter = state.filter;
@@ -35,6 +36,15 @@ export default function Header() {
         setSearch(value);
         dispatch(searchProducts(value))
     }
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsSticky(window.scrollY > 0);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
     return (
         <header>
             <div>
@@ -75,17 +85,17 @@ export default function Header() {
                 </div>
             </div>
             {/* Thanh menu bar */}
-            <nav className="navbar navbar-light fixed-div" style={{backgroundColor: "#e3f2fd"}}>
+            <nav className={`navbar navbar-light ${isSticky ? "sticky" : ""}`} style={{ backgroundColor: "#e3f2fd" }}>
                 <div className="container">
                     <div className="link-container">
                         {location.pathname === '/list-product' && (
-                            <a className={"link bg-success"} style={{padding: "10px 5px"}} href="/list-product">Danh sách sản phẩm <PiList/></a>
+                            <a className={"link bg-success"} style={{ padding: "10px 5px" }} href="/list-product">Danh sách sản phẩm <PiList /></a>
                         )}
                         {location.pathname !== '/list-product' && (
-                            <a className={"link bg-success"} style={{padding: "10px 5px"}} href="/list-product">Danh sách sản phẩm <PiList/></a>
+                            <a className={"link bg-success"} style={{ padding: "10px 5px" }} href="/list-product">Danh sách sản phẩm <PiList /></a>
                         )}
                         <div className="filter-dropdown">
-                            <CategoryFilter/>
+                            <CategoryFilter />
                         </div>
                     </div>
                     {location.pathname === '/' && (<a className={"active-link "} href="/">Trang chủ</a>)}
@@ -108,19 +118,13 @@ export default function Header() {
                     {location.pathname !== '/contact' && (
                         <a className={"link hover-link "} href="/contact">Liên hệ</a>)}
 
-                    <Search/>
-
-                    {/*{location.pathname === '/cart' && (<a className={"active-link "} href="/contact">Giỏ hàng</a>)}*/}
-                    {/*{location.pathname !== '/cart' && (*/}
-
-                    {/*// <a className={"link hover-link "} href="/cart">Giỏ hàng</a>*/}
+                    <Search />
 
                     <Link to="/cart" className="cart-icon">
-                        {/*<FontAwesomeIcon icon={faShoppingBag} className="text-primary me-4 fa-2x text-center"/>*/}
                         <div className="position-relative">
                             <div className="d-flex rounded-circle align-items-center justify-content-center bg-light"
-                                 style={{height: "40px", width: "40px"}}>
-                                <FaShoppingCart className="fs-3 text-center" style={{fontSize: "24px"}}/>
+                                 style={{ height: "40px", width: "40px" }}>
+                                <FaShoppingCart className="fs-3 text-center" style={{ fontSize: "24px" }} />
                             </div>
                             <div
                                 className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -129,10 +133,8 @@ export default function Header() {
                         </div>
 
                     </Link>
-                    {/*)}*/}
                 </div>
             </nav>
         </header>
-    )
-        ;
+    );
 }
