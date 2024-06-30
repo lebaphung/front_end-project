@@ -1,8 +1,7 @@
-
 import {useDispatch, useSelector} from "react-redux";
 import "./style.css";
 import React, {useEffect, useState} from 'react';
-import {Link, useLocation, useOutletContext} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {formatCurrency} from '../FormatCurrency';
 import {filterProducts, searchProducts} from "../redux/Action";
 import Header from "./Header";
@@ -58,6 +57,11 @@ const ProductList = () => {
     }
     //
     const location = useLocation();
+
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [currentFilter, startPrice, endPrice, search]);
+
     return (
         <div>
             <div className="container mt-2">
