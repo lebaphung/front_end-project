@@ -5,6 +5,7 @@ import {Link, useOutletContext} from 'react-router-dom';
 import {formatCurrency} from '../FormatCurrency';
 import {Dropdown} from "react-bootstrap";
 import {filterProducts, searchProducts} from "../redux/Action";
+import styles from './ProductList.module.css';
 
 const ProductList = () => {
     const dispatch = useDispatch();
@@ -37,6 +38,18 @@ const ProductList = () => {
     const handleFilter = (filter) => {
         dispatch(filterProducts(filter))
     }
+    // Phân trang
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage] = useState(8); // số sản phẩm hiển thị
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
+        pageNumbers.push(i);
+    }
+    //
     return (
         <div>
             <div className={"d-flex justify-content-center my-4"}>
@@ -60,7 +73,7 @@ const ProductList = () => {
             </div>
             <div className="container mt-5">
                 <div className="mb-5 row">
-                    {products.map(product => (
+                    {currentProducts.map(product => (
                         <div key={product.id} className={"p-2 col-3 text-center"}>
                             <div className={"p-2 border rounded-3"}>
                                 <Link className={"text-decoration-none text-dark"}
@@ -81,6 +94,17 @@ const ProductList = () => {
                         </div>
                     ))}
                 </div>
+                {/*Phân Trang*/}
+                <ul className="pagination d-flex justify-content-center">
+                    {pageNumbers.map(number => (
+                        <li key={number} className={`page-item ${currentPage === number ? 'active' : ''}`}>
+                            <button onClick={() => paginate(number)} className="page-link">
+                                {number}
+                            </button>
+                        </li>
+                    ))}
+                </ul>
+            {/**/}
             </div>
         </div>
     )
