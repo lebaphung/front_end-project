@@ -23,6 +23,8 @@
 .tableProduct{
     border: 1px solid #d8d8d8;
     margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 .table{
     width: 100%;
@@ -34,6 +36,9 @@
     border-bottom: 1px solid #d8d8d8;
     background: #eeeeee;
     padding: 30px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 .totalBill{
     background: #eeeeee;
@@ -43,7 +48,70 @@
     justify-content: space-between;
     align-items: center;
 }
+.tr{
+    border-bottom: 1px solid #d8d8d8;
+}
+/**/
+.solidBetween{
+    background: #d8d8d8 ;
+    width: 1px;
+}
 /*Phan 2*/
 .left{
     flex: 1;
+    margin: 20px 20px;
+}
+
+.pPTTT{
+    margin-bottom: 0;
+    padding: 5px 20px;
+    background: #d8d8d8;
+    margin-top: 10px;
+    width: 100%;
+    margin-left: 10px;
+    border-radius: 5px;
+}
+.inputHVT {
+    padding: 5px 5px;
+    margin-right: 15px;
+    flex: 1;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #d8d8d8;
+}
+.inputSDT {
+    padding: 5px 5px;
+    flex: 1;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #d8d8d8;
+}
+.inputEmail {
+    padding: 5px 5px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #d8d8d8;
+}
+.inputGC {
+    padding: 5px 5px;
+    width: 100%;
+    margin-top: 10px;
+    height: 80px;
+    border-radius: 5px;
+    border: 1px solid #d8d8d8;
+}
+.buttonTT{
+    width: 100%;
+    background: orange;
+    color: white;
+    margin-top: 10px;
+    height: 40px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }

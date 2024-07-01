@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './Checkout.module.css'
 const Checkout = () => {
     return(
@@ -12,20 +12,20 @@ const Checkout = () => {
                 <div className={styles.tableProduct}>
                     <table className={styles.table}>
                         <tr className={styles.TitleTR}>
-                            <th>
+                            <th scope={"col"}>
                                 Hình Ảnh
                             </th>
-                            <th>
+                            <th scope={"col"}>
                                 Tên Sản Phẩm
                             </th>
-                            <th>
+                            <th scope={"col"}>
                                 Số Lượng
                             </th>
-                            <th>
+                            <th scope={"col"}>
                                 Thành Tiền
                             </th>
                         </tr>
-                        <tr>
+                        <tr className={styles.tr}>
                             <td>
                                 <img className={"m-3 w-100"}
                                      src={"https://trungtamcaygiongtiengiang.com/watermark/product/540x540x1/upload/product/z5353502009320c2555d812b8b632f254cdee9acec48c4-4104.jpg"}
@@ -41,6 +41,22 @@ const Checkout = () => {
                                 100.000đ
                             </td>
                         </tr>
+                        <tr className={styles.tr}>
+                            <td>
+                                <img className={"m-3 w-100"}
+                                     src={"https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/1accc77c-2dcc-4bb0-b2b9-8e363e553ff4-4020.jpeg"}
+                                     alt="Image1"/>
+                            </td>
+                            <td>
+                                Cherry Brazil
+                            </td>
+                            <td>
+                                2
+                            </td>
+                            <td className={"text-danger"}>
+                                200.000đ
+                            </td>
+                        </tr>
                     </table>
                 </div>
                 <div className={styles.totalBill}>
@@ -48,36 +64,36 @@ const Checkout = () => {
                     <p className="text-danger mt-3 me-3">180.000đ</p>
                 </div>
             </div>
-            <div className={"solid"}></div>
-        {/*    Phan 2*/}
+            <div className={styles.solidBetween}></div>
+            {/*    Phan 2*/}
             <div className={styles.left}>
-                <p>HÌNH THỨC THANH TOÁN:</p>
-                <div className={"solid_httt"}></div>
+                <p className={"my-0"}>HÌNH THỨC THANH TOÁN:</p>
+                <div className={styles.solidR}></div>
                 <div className={"d-flex"}>
                     <input type={"radio"} id={"option1"} name={"pttt"} value={"option1"}/>
-                    <p>Thanh Toán Khi Nhận Hàng (COD)</p>
+                    <p className={styles.pPTTT}>Thanh Toán Khi Nhận Hàng (COD)</p>
                 </div>
                 <div className={"d-flex"}>
                     <input type={"radio"} id={"option2"} name={"pttt"} value={"option2"}/>
-                    <p>Thanh Toán Chuyển Khoản Ngân Hàng</p>
+                    <p className={styles.pPTTT}>Thanh Toán Chuyển Khoản Ngân Hàng</p>
                 </div>
                 {/*Thong tin nhan hang*/}
-                <p>THÔNG TIN NHẬN HÀNG:</p>
-                <div className={"solid_httt"}></div>
-                <div>
-                    <input type={"text"} placeholder={"Họ Và Tên"}/>
-                    <input type={"text"} placeholder={"Số Điện Thoại"}/>
+                <p className={"mt-3 my-0"}>THÔNG TIN NHẬN HÀNG:</p>
+                <div className={styles.solidR}></div>
+                <div className={"mt-3 d-flex"}>
+                    <input className={styles.inputHVT} type={"text"} placeholder={"Họ Và Tên"}/>
+                    <input className={styles.inputSDT} type={"text"} placeholder={"Số Điện Thoại"}/>
                 </div>
                 <div>
-                    <input type={"email"} placeholder={"Email"}/>
+                    <input className={styles.inputEmail} type={"email"} placeholder={"Email"}/>
                 </div>
                 <div>
-                    <input type={"text"} placeholder={"Địa Chỉ"}/>
+                    <input className={styles.inputEmail} type={"text"} placeholder={"Địa Chỉ"}/>
                 </div>
                 <div>
-                    <input type={"text"} placeholder={"Ghi Chú (Không bắt buộc)"}/>
+                    <input className={styles.inputGC} type={"text"} placeholder={"Ghi Chú (Không bắt buộc)"}/>
                 </div>
-                <div className={"btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"}>
+                <div className={styles.buttonTT}>
                     <a>Thanh Toán</a>
                 </div>
             </div>
