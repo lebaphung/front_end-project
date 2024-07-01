@@ -14,6 +14,7 @@ import Cart from "./components/Cart/Cart";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Checkout from "./components/Checkout/Checkout";
 import DichVu from "./components/DichVu";
+import KTNN from "./components/KTNN";
 function App() {
     // Lấy dữ liệu từ file json => đưa vào mảng.
     const [products, setProducts] = useState([]);
@@ -59,6 +60,7 @@ function App() {
                 <Route path="/sendMailDemo" element={<SendMailDemo/>}/>
                 <Route path="/Checkout" element={<Checkout/>}/>
                 <Route path="/DichVu" element={<DichVu/>}/>
+                <Route path="/KTNN" element={<KTNN/>}/>
 
                 {/*<Route path="/:id" element={<ProductDetail/>} loader={loadProduct}/>*/}
             </Routes>

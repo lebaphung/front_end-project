@@ -1,6 +1,5 @@
 import React from "react";
 import styles from './dv.module.css'
-import VeChungToi from "./VeChungToi";
 const DichVu = () => {
     return(
         <div className={styles.DVContainer}>
