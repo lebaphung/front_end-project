@@ -34,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 path: 'DichVu',
                 element: <DichVu/>
+            },
+            {
+                path: 'KTNN',
+                element: <KTNN/>
             }
         ]
     }
