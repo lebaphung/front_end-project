@@ -1,0 +1,84 @@
+.KTNNContainer{
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 30px;
+}
+.background_images_KTNN {
+    background-image: url('https://trungtamcaygiongtiengiang.com/assets/images/icon01.png'); /* Đường dẫn tới hình ảnh của bạn */
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+    text-align: center;
+    background-position-x: 50%;
+    background-position-y: 100%;
+    background-origin: padding-box;
+    /*background-position: center;*/
+    background-size: auto;
+    margin-bottom: 24px;
+    padding-bottom: 30px;
+    font-weight: bold;
+}
+.content {
+    display: flex;
+    margin-left: 20px;
+    width: 46%;
+    height: 200px;
+}
+.content_right {
+    display: flex;
+    margin-left: 20px;
+    width: 46%;
+    float: right;
+    height: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+
+}
+.content_left {
+    display: flex;
+    margin-left: 20px;
+    width: 46%;
+    float: left;
+    height: 200px;
+    margin-bottom: 20px;
+}
+.content_left2 {
+    display: flex;
+    margin-left: 20px;
+    width: 46%;
+    float: left;
+    height: 200px;
+    margin-right: 64px;
+}
+.ax{
+    display: inline-block;
+    width: 80%;
+}
+.img{
+    width: 250px;
+    height: auto;
+}
+.img:hover{
+    width: 270px;
+    object-fit: cover;
+}
+/*content*/
+.div_content{
+    margin-left: 10px;
+}
+.a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.a:hover{
+    color: red;
+}
+.pDate{
+    margin: 0;
+    color: #6c757d;
+}
+.p{
+    color: black;
+    font-weight: bold;
+    margin: 0;
+}
