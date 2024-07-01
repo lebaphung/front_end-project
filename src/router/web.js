@@ -4,6 +4,8 @@ import Error from "../components/Error";
 import Home from "../components/Home";
 import ProductList from "../components/ProductList";
 import VeChungToi from "../components/VeChungToi";
+import Checkout from "../components/Checkout/Checkout";
+import DichVu from "../components/DichVu";
 
 export const router = createBrowserRouter([
     {
@@ -28,6 +30,10 @@ export const router = createBrowserRouter([
             {
                 path: 'Checkout',
                 element: <Checkout/>
+            },
+            {
+                path: 'DichVu',
+                element: <DichVu/>
             }
         ]
     }
