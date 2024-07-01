@@ -14,7 +14,7 @@ export default function DetailFilters() {
     const [categories, setCategories] = useState([]);
     const currentFilter = useSelector(state => state.filter)
     useEffect(() => {
-        fetch('/jsondata/categories.json')
+        fetch('https://json-server-api-tv8h.onrender.com/api/categories')
             .then(response => response.json())
             .then(data => setCategories(data))
             .catch(error => console.error('Error fetching banner items:', error));

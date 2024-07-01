@@ -10,7 +10,7 @@ import DetailFilters from "./DetailFilters";
 
 const ProductList = () => {
     const dispatch = useDispatch();
-    const [search, setSearch] = useState("");
+    const search = useSelector(state => state.search)
     const currentFilter = useSelector(state => state.filter)
     const startPrice = useSelector(state => state.startPrice)
     const endPrice = useSelector(state => state.endPrice)
@@ -37,13 +37,6 @@ const ProductList = () => {
             .catch(error => console.error('Error fetching banner items:', error));
     }, []);
 
-    const handleSearchChange = (value) => {
-        setSearch(value);
-        dispatch(searchProducts(value))
-    }
-    const handleFilter = (filter) => {
-        dispatch(filterProducts(filter))
-    }
     // Phân trang
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage] = useState(8); // số sản phẩm hiển thị
@@ -68,7 +61,9 @@ const ProductList = () => {
                 <DetailFilters/>
                 <div className="mb-5 row">
                     <div className="vct_title text-center mt-5">
-                        {/*<h2 className={"background-image-vct"}>Giống cây ???</h2>*/}
+                        <h2 className={"background-image-vct"}>
+                            {search.length > 0 && (<div>Tìm kiếm ({products.length}): "{search}"</div>)}
+                        </h2>
                     </div>
                     {currentProducts.map(product => (
                         <div key={product.id} className={"p-2 col-3 text-center"}>
