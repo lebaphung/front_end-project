@@ -105,9 +105,9 @@ export default function Header() {
                     {location.pathname !== '/vct' && (
                         <a className={"link hover-link "} href="/vct">Về chúng tôi</a>)}
 
-                    {location.pathname === '/services' && (<a className={"active-link "} href="/services">Dịch vụ</a>)}
-                    {location.pathname !== '/services' && (
-                        <a className={"link hover-link "} href="/services">Dịch vụ</a>)}
+                    {location.pathname === '/DichVu' && (<a className={"active-link "} href="/DichVu">Dịch vụ</a>)}
+                    {location.pathname !== '/DichVu' && (
+                        <a className={"link hover-link "} href="/DichVu">Dịch vụ</a>)}
 
                     {location.pathname === '/architecture' && (
                         <a className={"active-link "} href="/architecture">Kiến thức nhà nông</a>)}
