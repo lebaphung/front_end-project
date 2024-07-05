@@ -111,7 +111,7 @@ export default function Header() {
 
                     {location.pathname === '/KTNN' && (
                         <a className={"active-link "} href="/KTNN">Kiến thức nhà nông</a>)}
-                    {location.pathname !== '/architecture' && (
+                    {location.pathname !== '/KTNN' && (
                         <a className={"link hover-link "} href="/KTNN">Kiến thức nhà nông</a>)}
 
                     {location.pathname === '/contact' && (<a className={"active-link "} href="/contact">Liên hệ</a>)}
