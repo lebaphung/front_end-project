@@ -89,10 +89,10 @@ export default function Header() {
                 <div className="container">
                     <div className="link-container">
                         {location.pathname === '/list-product' && (
-                            <a className={"link bg-success"} style={{ padding: "10px 5px" }} href="/list-product">Danh sách sản phẩm <PiList /></a>
+                            <a className={"link bg-success"} style={{ padding: "10px 5px", color: "white"}} href="/list-product">Danh sách sản phẩm <PiList /></a>
                         )}
                         {location.pathname !== '/list-product' && (
-                            <a className={"link bg-success"} style={{ padding: "10px 5px" }} href="/list-product">Danh sách sản phẩm <PiList /></a>
+                            <a className={"link bg-success"} style={{ padding: "10px 5px", color: "white"}} href="/list-product">Danh sách sản phẩm <PiList /></a>
                         )}
                         <div className="filter-dropdown">
                             <CategoryFilter />
