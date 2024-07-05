@@ -15,6 +15,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Checkout from "./components/Checkout/Checkout";
 import DichVu from "./components/DichVu";
 import KTNN from "./components/KTNN";
+import LoginCG from "./components/login/LoginCG";
+
 function App() {
     // Lấy dữ liệu từ file json => đưa vào mảng.
     const [products, setProducts] = useState([]);
@@ -66,6 +68,7 @@ function App() {
             </Routes>
             <Footer/>
         </div>
+
     );
 }
 
