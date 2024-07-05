@@ -29,7 +29,7 @@ export default function CategoryFilter() {
     }, []);
 
     const handleFilter = (filter) => {
-        navigate(`/list-product?filter=${filter}`); // Navigate to the desired route
+        navigate(`/list-product`); // Navigate to the desired route
         dispatch(filterProducts(filter))
     }
     return (

@@ -30,7 +30,10 @@ export default function DetailFilters() {
 
         if (startPrice !== '' || endPrice !== '') {
             document.getElementById("rangePriceValidation").innerHTML = '';
-            dispatch(priceFilter(start, end));
+            if (startPrice !== '' && endPrice !== '' && startPrice <= endPrice)
+                dispatch(priceFilter(start, end));
+            else
+                document.getElementById("rangePriceValidation").innerHTML = 'Vui lòng điền khoảng giá phù hợp';
         } else {
             document.getElementById("rangePriceValidation").innerHTML = 'Vui lòng điền khoảng giá phù hợp';
         }
