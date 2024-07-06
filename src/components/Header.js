@@ -2,10 +2,12 @@ import './style.css'
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+import { FaUser } from "react-icons/fa";
+
 // npm install react-fast-marquee
 import Marquee from "react-fast-marquee";
 // npm install react-bootstrap bootstrap
-import { Dropdown } from "react-bootstrap";
+import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "react-bootstrap";
 // npm install react-router-dom
 import { BrowserRouter, Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -44,6 +46,28 @@ export default function Header() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    //Lấy tên của tài khoản
+    const [name , setName] = useState('');
+      useEffect(() => {
+          const users = JSON.parse(localStorage.getItem('users')) || [];
+          const emailLogin = localStorage.getItem("loginInUser") || [];
+          const userEmail = users.find(user => user.email === emailLogin);
+          if(userEmail){
+                setName(userEmail.name);
+          }
+      });
+    //   toggle
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const toggle = () => setDropdownOpen(prevState => !prevState);
+    // Đăng xuất
+    // Hàm xử lý đăng xuất
+    const handleLogout = () => {
+        // Xóa thông tin đăng nhập từ Local Storage
+        localStorage.removeItem('loginInUser');
+        // Cập nhật state để phản ánh trạng thái đăng xuất
+        setName('');
+    };
 
     return (
         <header>
@@ -89,13 +113,15 @@ export default function Header() {
                 <div className="container">
                     <div className="link-container">
                         {location.pathname === '/list-product' && (
-                            <a className={"link bg-success"} style={{ padding: "10px 5px", color: "white"}} href="/list-product">Danh sách sản phẩm <PiList /></a>
+                            <a className={"link bg-success"} style={{padding: "10px 5px", color: "white"}}
+                               href="/list-product">Danh sách sản phẩm <PiList/></a>
                         )}
                         {location.pathname !== '/list-product' && (
-                            <a className={"link bg-success"} style={{ padding: "10px 5px", color: "white"}} href="/list-product">Danh sách sản phẩm <PiList /></a>
+                            <a className={"link bg-success"} style={{padding: "10px 5px", color: "white"}}
+                               href="/list-product">Danh sách sản phẩm <PiList/></a>
                         )}
                         <div className="filter-dropdown">
-                            <CategoryFilter />
+                            <CategoryFilter/>
                         </div>
                     </div>
                     {location.pathname === '/' && (<a className={"active-link "} href="/">Trang chủ</a>)}
@@ -117,24 +143,39 @@ export default function Header() {
                     {location.pathname === '/contact' && (<a className={"active-link "} href="/contact">Liên hệ</a>)}
                     {location.pathname !== '/contact' && (
                         <a className={"link hover-link "} href="/contact">Liên hệ</a>)}
-
-                    <Search />
-
-                    <Link to="/cart" className="cart-icon">
-                        <div className="position-relative">
-                            <div className="d-flex rounded-circle align-items-center justify-content-center bg-light"
-                                 style={{ height: "40px", width: "40px" }}>
-                                <FaShoppingCart className="fs-3 text-center" style={{ fontSize: "24px" }} />
-                            </div>
-                            <div
-                                className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                3<span className="visually-hidden">3</span>
-                            </div>
+                    <Search/>
+                    {/*{name ? <button type="button" className="btn btn-sm btn-primary "><FaUser/> <p>{name}</p></button>  :<a className={"link hover-link"}*/}
+                    {/*href={"/login"}>Đăng Nhập</a>*/}
+                    {name ? (
+                        <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                            <DropdownToggle tag="span" data-toggle="dropdown" aria-expanded={dropdownOpen}>
+                                <button type="button" className="btn btn-sm btn-primary">
+                                    <FaUser /> <p className="d-inline">{name}</p>
+                                </button>
+                            </DropdownToggle>
+                            <DropdownMenu end>
+                                <DropdownItem onClick={handleLogout}>Đăng xuất</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                    ) : (
+                        <a className="link hover-link" href="/login">Đăng Nhập</a>
+                    )}
+                <Link to="/cart" className="cart-icon">
+                    <div className="position-relative">
+                        <div className="d-flex rounded-circle align-items-center justify-content-center bg-light"
+                             style={{height: "40px", width: "40px"}}>
+                            <FaShoppingCart className="fs-3 text-center" style={{fontSize: "24px"}}/>
                         </div>
+                        <div
+                            className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            3<span className="visually-hidden">3</span>
+                        </div>
+                    </div>
 
-                    </Link>
-                </div>
-            </nav>
-        </header>
-    );
+                </Link>
+            </div>
+        </nav>
+</header>
+)
+    ;
 }
