@@ -7,6 +7,8 @@ import VeChungToi from "../components/VeChungToi";
 import Checkout from "../components/Checkout/Checkout";
 import DichVu from "../components/DichVu";
 import LoginCG from "../components/login/LoginCG";
+import Register from "../components/login/Register";
+import KTNN from "../components/KTNN";
 
 export const router = createBrowserRouter([
     {
@@ -43,6 +45,10 @@ export const router = createBrowserRouter([
             {
                 path: 'login',
                 element: <LoginCG/>
+            },
+            {
+                path: 'register',
+                element: <Register/>
             }
         ]
     }
