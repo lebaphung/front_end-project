@@ -15,8 +15,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Checkout from "./components/Checkout/Checkout";
 import DichVu from "./components/DichVu";
 import KTNN from "./components/KTNN";
-import Login from "./components/user/Login";
-import Register from "./components/user/Register";
+import LoginCG from "./components/login/LoginCG";
+import Register from "./components/login/Register";
 function App() {
     // Lấy dữ liệu từ file json => đưa vào mảng.
     const [products, setProducts] = useState([]);
@@ -63,12 +63,13 @@ function App() {
                 <Route path="/Checkout" element={<Checkout/>}/>
                 <Route path="/DichVu" element={<DichVu/>}/>
                 <Route path="/KTNN" element={<KTNN/>}/>
-                <Route path="/login" element={<Login/>}/>
+                <Route path="/login" element={<LoginCG/>}/>
                 <Route path="/register" element={<Register/>}/>
                 {/*<Route path="/:id" element={<ProductDetail/>} loader={loadProduct}/>*/}
             </Routes>
             {location.pathname !== '/login' && location.pathname !== '/register' && <Footer />}
         </div>
+
     );
 }
 
