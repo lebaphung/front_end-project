@@ -89,10 +89,10 @@ export default function Header() {
                 <div className="container">
                     <div className="link-container">
                         {location.pathname === '/list-product' && (
-                            <a className={"link bg-success"} style={{ padding: "10px 5px" }} href="/list-product">Danh sách sản phẩm <PiList /></a>
+                            <a className={"link bg-success"} style={{ padding: "10px 5px", color: "white"}} href="/list-product">Danh sách sản phẩm <PiList /></a>
                         )}
                         {location.pathname !== '/list-product' && (
-                            <a className={"link bg-success"} style={{ padding: "10px 5px" }} href="/list-product">Danh sách sản phẩm <PiList /></a>
+                            <a className={"link bg-success"} style={{ padding: "10px 5px", color: "white"}} href="/list-product">Danh sách sản phẩm <PiList /></a>
                         )}
                         <div className="filter-dropdown">
                             <CategoryFilter />
@@ -111,7 +111,7 @@ export default function Header() {
 
                     {location.pathname === '/KTNN' && (
                         <a className={"active-link "} href="/KTNN">Kiến thức nhà nông</a>)}
-                    {location.pathname !== '/architecture' && (
+                    {location.pathname !== '/KTNN' && (
                         <a className={"link hover-link "} href="/KTNN">Kiến thức nhà nông</a>)}
 
                     {location.pathname === '/contact' && (<a className={"active-link "} href="/contact">Liên hệ</a>)}

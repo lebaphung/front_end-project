@@ -8,12 +8,12 @@ const DichVu = () => {
             </div>
             <div>
                 <div className={styles.content_left}>
-                    <a className={styles.ax} href={"https://youtu.be/avt8aZgq5Aw"}>
+                    <a target="_blank" className={styles.ax} href={"https://youtu.be/avt8aZgq5Aw"}>
                         <img className={styles.img}
                             src={"https://trungtamcaygiongtiengiang.com/thumbs/472x354x1/upload/news/z3842390171577004151bc6d7f97c6ed26418ce855e201-8894.jpg"}/>
                     </a>
                     <div className={styles.div_content}>
-                        <a className={styles.a} href={"https://youtu.be/avt8aZgq5Aw"}>HỖ TRỢ THU HOACH THU MUA TẠI VƯỜN</a>
+                        <a target="_blank" className={styles.a} href={"https://youtu.be/avt8aZgq5Aw"}>HỖ TRỢ THU HOACH THU MUA TẠI VƯỜN</a>
                         <p className={styles.pDate}>Ngày đăng: 13/6/2024</p>
                         <p>Trung Tâm Cây Giống ngoài cung cấp giống cây trồng chất lượng cho bà con chúng tôi còn hỗ trợ
                             bà con thu hoạch và thu mua
@@ -22,30 +22,30 @@ const DichVu = () => {
                     </div>
                 </div>
                 <div className={styles.content_right}>
-                    <a className={styles.ax} href={"https://youtu.be/XS4jvMf4-D4"}>
+                    <a target="_blank" className={styles.ax} href={"https://youtu.be/XS4jvMf4-D4"}>
                         <img className={styles.img}
                             src={"https://trungtamcaygiongtiengiang.com/thumbs/472x354x1/upload/news/z3842390192563b57cd1ed6ecd20b704842296415ea5bc-2272.jpg"}/>
                     </a>
                     <div className={styles.div_content}>
-                        <a className={styles.a} href={"https://youtu.be/XS4jvMf4-D4"}>TƯ VẤN GIỐNG CÂY TRỒNG TẠI VƯỜN</a>
+                        <a target="_blank" className={styles.a} href={"https://youtu.be/XS4jvMf4-D4"}>TƯ VẤN GIỐNG CÂY TRỒNG TẠI VƯỜN</a>
                         <p className={styles.pDate}>Ngày đăng: 1/7/2024</p>
                         <p>Kiểm tra thổ dưỡng tận nơi và đưa ra giải pháp giống cây trồng phù hợp nhất với quý bà
                             con.</p>
                     </div>
                 </div>
                 <div className={styles.content_left2}>
-                    <a className={styles.ax} href={"https://youtu.be/CGqOCVAYFUs"}>
+                    <a target="_blank" className={styles.ax} href={"https://youtu.be/CGqOCVAYFUs"}>
                         <img className={styles.img}
                             src={"https://trungtamcaygiongtiengiang.com/thumbs/472x354x1/upload/news/z3842390171220dbbcf5399368f96997fa1fb364923158-2802.jpg"}/>
                     </a>
                     <div className={styles.div_content}>
-                        <a className={styles.a} href={"https://youtu.be/CGqOCVAYFUs"}>DỊCH VỤ VẬN CHUYỂN GIAO HÀNG TOÀN QUỐC</a>
+                        <a target="_blank" className={styles.a} href={"https://youtu.be/CGqOCVAYFUs"}>DỊCH VỤ VẬN CHUYỂN GIAO HÀNG TOÀN QUỐC</a>
                         <p className={styles.pDate}>Ngày đăng: 1/7/2024</p>
                         <p>Ship hàng toàn quốc dù quý khách hàng ở đâu - đảm bảo mang chất lượng tốt nhất đến tay người dùng.</p>
                     </div>
                 </div>
                 <div className={styles.content}>
-                    <a className={styles.ax}>
+                    <a target="_blank" className={styles.ax}>
                         <img className={styles.img}
                             src={"https://trungtamcaygiongtiengiang.com/thumbs/472x354x1/upload/news/z384239000319139c0cb8525990d6e5cfd9de76f4c7e5a-8524.jpg"}/>
                     </a>

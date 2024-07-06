@@ -1,7 +1,7 @@
 import './style.css'
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {filterProducts, searchProducts} from "../redux/Action";
+import {filterProducts, searchProducts, sort} from "../redux/Action";
 import {useLocation, useNavigate} from "react-router-dom";
 
 export default function CategoryFilter() {
@@ -22,14 +22,14 @@ export default function CategoryFilter() {
     });
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch('/jsondata/categories.json')
+        fetch('https://json-server-api-tv8h.onrender.com/api/categories')
             .then(response => response.json())
             .then(data => setCategories(data))
             .catch(error => console.error('Error fetching banner items:', error));
     }, []);
 
     const handleFilter = (filter) => {
-        navigate(`/list-product?filter=${filter}`); // Navigate to the desired route
+        navigate(`/list-product`); // Navigate to the desired route
         dispatch(filterProducts(filter))
     }
     return (

@@ -4,7 +4,7 @@ import {Provider, useDispatch} from "react-redux";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import {loadProducts} from "./redux/Action";
-import {Outlet, Route, RouterProvider, Routes, BrowserRouter, redirect} from "react-router-dom";
+import {Outlet, Route, RouterProvider, Routes, BrowserRouter, redirect, useLocation} from "react-router-dom";
 import Home from "./components/Home";
 import ProductList from "./components/ProductList";
 import VeChungToi from "./components/VeChungToi";
@@ -16,7 +16,7 @@ import Checkout from "./components/Checkout/Checkout";
 import DichVu from "./components/DichVu";
 import KTNN from "./components/KTNN";
 import LoginCG from "./components/login/LoginCG";
-
+import Register from "./components/login/Register";
 function App() {
     // Lấy dữ liệu từ file json => đưa vào mảng.
     const [products, setProducts] = useState([]);
@@ -49,10 +49,10 @@ function App() {
             dispatch(loadProducts(products));
         }
     }, [dispatch, products]);
-
+    const location = useLocation();
     return (
         <div>
-            <Header/>
+            {location.pathname !== '/login' && location.pathname !== '/register' && <Header />}
             <Routes>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/list-product" element={<ProductList/>}/>
@@ -63,10 +63,11 @@ function App() {
                 <Route path="/Checkout" element={<Checkout/>}/>
                 <Route path="/DichVu" element={<DichVu/>}/>
                 <Route path="/KTNN" element={<KTNN/>}/>
-
+                <Route path="/login" element={<LoginCG/>}/>
+                <Route path="/register" element={<Register/>}/>
                 {/*<Route path="/:id" element={<ProductDetail/>} loader={loadProduct}/>*/}
             </Routes>
-            <Footer/>
+            {location.pathname !== '/login' && location.pathname !== '/register' && <Footer />}
         </div>
 
     );
