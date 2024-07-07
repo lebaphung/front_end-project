@@ -65,7 +65,6 @@ export default function Header() {
     const handleLogout = () => {
         // Xóa thông tin đăng nhập từ Local Storage
         localStorage.removeItem('loginInUser');
-        // Cập nhật state để phản ánh trạng thái đăng xuất
         setName('');
     };
 
@@ -144,8 +143,6 @@ export default function Header() {
                     {location.pathname !== '/contact' && (
                         <a className={"link hover-link "} href="/contact">Liên hệ</a>)}
                     <Search/>
-                    {/*{name ? <button type="button" className="btn btn-sm btn-primary "><FaUser/> <p>{name}</p></button>  :<a className={"link hover-link"}*/}
-                    {/*href={"/login"}>Đăng Nhập</a>*/}
                     {name ? (
                         <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                             <DropdownToggle tag="span" data-toggle="dropdown" aria-expanded={dropdownOpen}>
@@ -153,8 +150,9 @@ export default function Header() {
                                     <FaUser /> <p className="d-inline">{name}</p>
                                 </button>
                             </DropdownToggle>
-                            <DropdownMenu end>
+                            <DropdownMenu >
                                 <DropdownItem onClick={handleLogout}>Đăng xuất</DropdownItem>
+                                <DropdownItem >Lịch Sử Đơn Hàng</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
                     ) : (
