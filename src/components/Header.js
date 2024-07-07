@@ -2,7 +2,9 @@ import './style.css'
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+import { CiLogout } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
+import { FaHistory } from "react-icons/fa";
 
 // npm install react-fast-marquee
 import Marquee from "react-fast-marquee";
@@ -151,8 +153,8 @@ export default function Header() {
                                 </button>
                             </DropdownToggle>
                             <DropdownMenu >
-                                <DropdownItem onClick={handleLogout}>Đăng xuất</DropdownItem>
-                                <DropdownItem >Lịch Sử Đơn Hàng</DropdownItem>
+                                <DropdownItem onClick={handleLogout}><CiLogout /> Đăng xuất</DropdownItem>
+                                <DropdownItem ><FaHistory /> Lịch Sử Đơn Hàng</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
                     ) : (
