@@ -123,7 +123,7 @@ const Home = () => {
                                         <div className={"p-2"}>
                                             <img
                                                 src="https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z468507245738775565b9433db55df9e7e1ab61c0d949a-2025.jpg"
-                                                //{product.img}
+
                                                 className={"w-100 h-100 border rounded-3 hover-scale"}
                                                 alt={product.name}/>
                                         </div>
