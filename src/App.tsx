@@ -17,6 +17,7 @@ import DichVu from "./components/DichVu";
 import KTNN from "./components/KTNN";
 import LoginCG from "./components/login/LoginCG";
 import Register from "./components/login/Register";
+import PurchaseGuide from "./components/PurchaseGuide";
 function App() {
     // Lấy dữ liệu từ file json => đưa vào mảng.
     const [products, setProducts] = useState([]);
@@ -65,11 +66,11 @@ function App() {
                 <Route path="/KTNN" element={<KTNN/>}/>
                 <Route path="/login" element={<LoginCG/>}/>
                 <Route path="/register" element={<Register/>}/>
+                <Route path="/purchaseGuide" element={<PurchaseGuide/>}/>
                 {/*<Route path="/:id" element={<ProductDetail/>} loader={loadProduct}/>*/}
             </Routes>
             {location.pathname !== '/login' && location.pathname !== '/register' && <Footer />}
         </div>
-
     );
 }
 
