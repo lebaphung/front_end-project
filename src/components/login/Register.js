@@ -1,10 +1,12 @@
-import React,{useState} from "react"
+import React, {useEffect, useState} from "react"
 import styles from "./register.module.css";
 import { useNavigate } from 'react-router-dom';
 import {FaFacebook, FaGoogle} from "react-icons/fa";
 const Register = () => {
     const [name,setName] = useState('');
     const [email,setEmail] = useState('');
+    const [users,setUsers] = useState([]);
+    const [emailList,setEmailList] = useState([]);
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
@@ -24,28 +26,53 @@ const Register = () => {
     const handleConfirmPasswordChage = (e) => {
         setConfirmPassword(e.target.value);
     };
-    const handleSubmit = (e) => {
+    // Lấy dữ liệu user trên fetchAPI để validation
+    useEffect(() => {
+        fetch('https://json-server-api-tv8h.onrender.com/api/users')
+            .then(reponse => reponse.json())
+            .then(data => {
+                setUsers(data); //lưu danh sách ng dùng vào state
+                const emailAPI = data.map(users => users.email);
+                setEmailList(emailAPI);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    },[]);
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if(name == ''|| email == '' || password == '' || confirmPassword == ''){
+        if (name == '' || email == '' || password == '' || confirmPassword == '') {
             setMessage("Chưa điền đầy đủ thông tin!")
-        }else{
-            if(password != confirmPassword){
+        } else {
+            if (password != confirmPassword) {
                 setMessage("Xác thực mật khẩu không chính xác!")
-            }else{
-                const users = JSON.parse(localStorage.getItem('users')) || []; // lấy user trong localStorage ra
-                const userExists = users.some(user => user.email === email); // kiểm tra email đã tồn tại chưa
-
-                if (userExists) {
+            } else {
+                if (emailList.includes(email)) {
                     setMessage("Email đã tồn tại!")
                     return;
                 }
-                users.push({name, email, password });
-                localStorage.setItem('users', JSON.stringify(users));
-                setMessageSucess("Đăng ký thành công!");
-                setMessage("");
-                setTimeout(() => {
-                    navigate("/login");//chuyển trang
-                },1000);
+                try {
+                    const response = await fetch('https://json-server-api-tv8h.onrender.com/api/users', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({email, password, name}),
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        setMessageSucess("Đăng ký thành công!");
+                        setMessage("");
+                        setTimeout(() => {
+                            navigate("/login");//chuyển trang
+                        },1000);
+                    } else {
+                        setMessage(`Failed to submit email: ${data.message}`);
+                    }
+                } catch (error) {
+                    setMessage(`Error: ${error.message}`);
+                }
+
             }
         }
 

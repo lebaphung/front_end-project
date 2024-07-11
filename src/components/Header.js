@@ -57,11 +57,10 @@ export default function Header() {
     //Lấy tên của tài khoản
     const [name, setName] = useState('');
     useEffect(() => {
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const emailLogin = localStorage.getItem("loginInUser") || [];
-        const userEmail = users.find(user => user.email === emailLogin);
-        if (userEmail) {
-            setName(userEmail.name);
+        const login = JSON.parse(localStorage.getItem("loginInUser"));
+        if (login) {
+            const { name } = login;
+            setName(name);
         }
     });
     //   toggle
@@ -120,12 +119,12 @@ export default function Header() {
                 <div className="container">
                     <div className="link-container">
                         {location.pathname === '/list-product' && (
-                            <Link to="/list-product" className={"active-link"} style={{padding: "10px 5px"}}>
+                            <Link to="/list-product" className={"active-link"} style={{padding: "10px 5px",background:"white",color:"black"}}>
                                 Danh sách sản phẩm <PiList/>
                             </Link>
                         )}
                         {location.pathname !== '/list-product' && (
-                            <Link to="/list-product" className={"link hover-link"} style={{padding: "10px 5px"}}>
+                            <Link to="/list-product" className={"link hover-link"} style={{padding: "10px 5px" ,background:"white",color:"black"}}>
                                 Danh sách sản phẩm <PiList/>
                             </Link>
                         )}
@@ -197,7 +196,11 @@ export default function Header() {
                             </DropdownToggle>
                             <DropdownMenu>
                                 <DropdownItem onClick={handleLogout}><CiLogout/> Đăng xuất</DropdownItem>
-                                <DropdownItem><FaHistory/> Lịch Sử Đơn Hàng</DropdownItem>
+                                <DropdownItem>
+                                    <Link to={"/orderHistory"} className={"text-decoration-none text-dark"}>
+                                        <FaHistory/> Lịch Sử Đơn Hàng
+                                    </Link>
+                                </DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
                     ) : (

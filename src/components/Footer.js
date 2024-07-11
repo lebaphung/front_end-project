@@ -11,9 +11,9 @@ export default function Footer() {
                         <p>
                             Địa chỉ: đường 868B, Ấp Mỹ Hòa, Xã Mỹ Hạnh Trung, TX Cai Lậy - Tiền Giang
                             <br/>
-                            Hotline: 034567 9887, 0777403339
+                            Hotline: 034567 9887 - 0777403339
                             <br/>
-                            Email: info@trungtamcaygiongtiengiang.com
+                            Email: nonglamsprout2003@gmail.com
                         </p>
                         <Link to={"/purchaseGuide"} className={"btn btn-success"}>
                             Hướng dẫn mua hàng
@@ -39,7 +39,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="text-center p-3" style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
-                &copy; 2023 Trung Tâm Cây Giống.
+                &copy; 2024 Trung Tâm Cây Giống.
             </div>
         </footer>
     )
