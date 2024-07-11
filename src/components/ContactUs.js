@@ -23,15 +23,10 @@ const ContactUs = () => {
                         </div>
                         <div className="col-lg-12">
                             <div className="h-100 rounded">
-                                <iframe
-                                    className="rounded w-100"
-                                    style={{height: '400px'}}
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125404.30380710536!2d106.70744878678997!3d10.820150574123575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174d85e042bf04b%3A0xbb26baec1664394d!2zVGjhu6cgxJDhu6ljLCBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1718867157578!5m2!1svi!2s"
-                                    loading="lazy"
-                                    referrerPolicy="no-referrer-when-downgrade"
-                                    title="Google Map"
-                                ></iframe>
-
+                                <iframe className={"w-100 h-100"}
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.9539780619984!2d106.1381382742672!3d10.425226865575059!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310a97b382425caf%3A0xe9abebb04082f771!2zxJDGsOG7nW5nIDg2OGIsIENhaSBM4bqteSwgVGnhu4FuIEdpYW5nLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2sus!4v1720512158825!5m2!1svi!2sus"
+                                    style={{border:'0'}} allowFullScreen="" loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                         <div className="col-lg-7">
@@ -52,7 +47,7 @@ const ContactUs = () => {
                                 <FontAwesomeIcon icon={faMapMarker} className="text-primary me-4 fa-2x"/>
                                 <div>
                                     <h4>Địa chỉ</h4>
-                                    <p className="mb-2 fst-italic">Khu phố 10, Linh Trung, Thủ Đức, TP. Hồ Chí Minh</p>
+                                    <p className="mb-2 fst-italic">đường 868B, Ấp Mỹ Hòa, Xã Mỹ Hạnh Trung, TX Cai Lậy - Tiền Giang</p>
                                 </div>
                             </div>
                             <div className="d-flex p-4 rounded mb-4 bg-white">
@@ -67,7 +62,7 @@ const ContactUs = () => {
                                 <FontAwesomeIcon icon={faPhone} className="text-primary me-4 fa-2x"/>
                                 <div>
                                     <h4>Số điện thoại</h4>
-                                    <p className="mb-2 fst-italic">(+84) 371 455 082</p>
+                                    <p className="mb-2 fst-italic">(+84) 34567 9887</p>
                                 </div>
                             </div>
                         </div>

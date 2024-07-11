@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "userId": 1,
+    "phoneNumber": "0865299444",
+    "userName": "Nguyễn Thị Dậu",
+    "address": "17 Quang Trung, Phú Phong, Thị Xã An Nhơn, Bình Định",
+    "note": "Chúc mừng sinh nhật em!",
+    "totalPrice": 1900000,
+    "dateAdded": "2023-11-14",
+    "orderItems": [
+      {
+        "productId": 2,
+        "quantity": 2,
+        "unitPrice": 600000,
+        "finalPrice": 1200000
+      },
+      {
+        "productId": 3,
+        "quantity": 1,
+        "unitPrice": 100000,
+        "finalPrice": 100000
+      },
+      {
+        "productId": 4,
+        "quantity": 1,
+        "unitPrice": 600000,
+        "finalPrice": 600000
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "userId": 1,
+    "phoneNumber": "0865299444",
+    "userName": "Nguyễn Thị Dậu",
+    "address": "17 Quang Trung, Phú Phong, Thị Xã An Nhơn, Bình Định",
+    "note": "Chúc mừng sinh nhật em!",
+    "totalPrice": 1900000,
+    "dateAdded": "2023-11-14",
+    "orderItems": [
+      {
+        "productId": 2,
+        "quantity": 2,
+        "unitPrice": 600000,
+        "finalPrice": 1200000
+      },
+      {
+        "productId": 3,
+        "quantity": 1,
+        "unitPrice": 100000,
+        "finalPrice": 100000
+      },
+      {
+        "productId": 4,
+        "quantity": 1,
+        "unitPrice": 600000,
+        "finalPrice": 600000
+      }
+    ]
+  }
+]

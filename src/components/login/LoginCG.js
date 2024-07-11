@@ -9,23 +9,30 @@ const LoginCG = () => {
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [messageSuccess, setMessageSucess] = useState('');
-    const Login = () => {
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const userEmail = users.find(user => user.email === email);
-        const user = users.find(user => user.email === email && user.password === password);
-        if(userEmail){
-            if(user){
-                localStorage.setItem('loginInUser',email);
-                setMessageSucess("Đăng Nhập thành công!");
+    const Login = async () => {
+        try {
+            const response = await fetch('https://json-server-api-tv8h.onrender.com/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({email, password}),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                setMessageSucess("Đăng nhập thành công!" );
+                localStorage.setItem('loginInUser', JSON.stringify({ id: data.id, name: data.name }));
                 setMessage("");
                 setTimeout(() => {
                     navigate("/");//chuyển trang
-                },1000);
-            }else{
-                setMessage("Password không chính xác!")
+                }, 1000);
+            } else {
+                setMessage(`${data.message}`);
             }
-        }else{
-            setMessage("Email không tồn tại!")
+        } catch (error) {
+            setMessage(`Error: ${error.message}`);
         }
     }
 
