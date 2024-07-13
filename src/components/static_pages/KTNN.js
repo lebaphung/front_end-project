@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './KTNN.module.css'
+import styles from '../css/KTNN.module.css'
 const KTNN = () => {
     return(
         <div className={styles.KTNNContainer}>

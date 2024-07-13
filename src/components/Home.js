@@ -1,4 +1,4 @@
-import "./style.css";
+import "./css/style.css";
 import React, {useEffect, useState} from 'react';
 import {Link, useOutletContext} from 'react-router-dom';
 // npm install react-slick --save
@@ -8,7 +8,6 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Banner from './Banner'
 import {formatCurrency} from '../FormatCurrency';
-import Header from "./Header";
 
 const Home = () => {
     const urlAPI = "https://json-server-api-tv8h.onrender.com/api/products"

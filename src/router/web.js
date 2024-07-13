@@ -3,12 +3,12 @@ import App from "../App";
 import Error from "../components/Error";
 import Home from "../components/Home";
 import ProductList from "../components/ProductList";
-import VeChungToi from "../components/VeChungToi";
-import Checkout from "../components/Checkout/Checkout";
-import DichVu from "../components/DichVu";
+import VeChungToi from "../components/static_pages/VeChungToi";
+import Checkout from "../components/checkout/Checkout";
+import DichVu from "../components/static_pages/DichVu";
 import LoginCG from "../components/login/LoginCG";
 import Register from "../components/login/Register";
-import KTNN from "../components/KTNN";
+import KTNN from "../components/static_pages/KTNN";
 
 export const router = createBrowserRouter([
     {

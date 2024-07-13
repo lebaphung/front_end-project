@@ -1,7 +1,7 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMapMarker, faEnvelope, faPhone} from '@fortawesome/free-solid-svg-icons'
-import styles from './vct.module.css';
+import styles from '../css/vct.module.css';
 const ContactUs = () => {
     return (
         <div className="container-fluid contact py-5">

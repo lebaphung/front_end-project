@@ -1,11 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
-import "./style.css";
+import "./css/style.css";
 import React, {useEffect, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import {formatCurrency} from '../FormatCurrency';
-import {filterProducts, searchProducts} from "../redux/Action";
-import Header from "./Header";
-import Search from "./Search";
 import DetailFilters from "./DetailFilters";
 
 const ProductList = () => {
