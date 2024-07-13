@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './dv.module.css'
+import styles from '../css/dv.module.css'
 const DichVu = () => {
     return(
         <div className={styles.DVContainer}>

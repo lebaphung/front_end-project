@@ -1,4 +1,4 @@
-import './style.css'
+import './css/style.css'
 import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faShoppingBag} from '@fortawesome/free-solid-svg-icons'
@@ -14,7 +14,7 @@ import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "react-bootst
 import {BrowserRouter, Link, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {filterProducts, searchProducts} from "../redux/Action";
-import Cart from "./Cart/Cart";
+import Cart from "./cart/Cart";
 import Search from "./Search";
 import CategoryFilter from "./CategoryFilter";
 // npm install react-icons

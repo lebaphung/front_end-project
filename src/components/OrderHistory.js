@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styles from './OrderHistory.module.css'
+import styles from './css/OrderHistory.module.css'
 import {Link} from "react-router-dom";
 
 const OrderHistory = () => {

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {filterProducts, priceFilter, sort} from '../redux/Action';
 import NumericInput from './NumericInput';
-import './style.css';
+import './css/style.css';
 import {Dropdown} from "react-bootstrap";
 
 export default function DetailFilters() {
