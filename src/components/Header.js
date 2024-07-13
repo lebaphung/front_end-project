@@ -11,9 +11,9 @@ import Marquee from "react-fast-marquee";
 // npm install react-bootstrap bootstrap
 import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "react-bootstrap";
 // npm install react-router-dom
-import {BrowserRouter, Link, useLocation} from "react-router-dom";
+import {BrowserRouter, Link, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {searchProducts} from "../redux/Action";
+import {filterProducts, searchProducts} from "../redux/Action";
 import Cart from "./Cart/Cart";
 import Search from "./Search";
 import CategoryFilter from "./CategoryFilter";
@@ -22,6 +22,7 @@ import {PiList} from "react-icons/pi";
 import {FaShoppingCart} from "react-icons/fa";
 
 export default function Header() {
+    const navigate = useNavigate();
     const location = useLocation();
     const [search, setSearch] = useState("");
     const [isSticky, setIsSticky] = useState(false);
@@ -59,7 +60,7 @@ export default function Header() {
     useEffect(() => {
         const login = JSON.parse(localStorage.getItem("loginInUser"));
         if (login) {
-            const { name } = login;
+            const {name} = login;
             setName(name);
         }
     });
@@ -73,7 +74,10 @@ export default function Header() {
         localStorage.removeItem('loginInUser');
         setName('');
     };
-
+    const handleToProductsPage = () => {
+        dispatch(filterProducts('ALL'))
+        navigate(`/list-product`)
+    }
     return (
         <header>
             <div>
@@ -119,14 +123,16 @@ export default function Header() {
                 <div className="container">
                     <div className="link-container">
                         {location.pathname === '/list-product' && (
-                            <Link to="/list-product" className={"active-link"} style={{padding: "10px 5px",background:"white",color:"black"}}>
+                            <div to="/list-product" className={"active-link"} onClick={handleToProductsPage}
+                                  style={{padding: "10px 5px", background: "white", color: "black", cursor: "pointer"}}>
                                 Danh sách sản phẩm <PiList/>
-                            </Link>
+                            </div>
                         )}
                         {location.pathname !== '/list-product' && (
-                            <Link to="/list-product" className={"link hover-link"} style={{padding: "10px 5px" ,background:"white",color:"black"}}>
+                            <div to="/list-product" className={"link hover-link"} onClick={handleToProductsPage}
+                                  style={{padding: "10px 5px", background: "white", color: "black", cursor: "pointer"}}>
                                 Danh sách sản phẩm <PiList/>
-                            </Link>
+                            </div>
                         )}
                         <div className="filter-dropdown">
                             <CategoryFilter/>
