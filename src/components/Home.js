@@ -118,20 +118,6 @@ const Home = () => {
                             <div key={product.id} className={"p-2 text-center"}>
                                 {/* Hiển thị thông tin sản phẩm */}
                                 <div className={"p-2"}>
-                                    <Link className={"text-decoration-none text-dark"}
-                                          to={`/product/${product.id}`}>
-                                        <div className={"p-2"}>
-                                            <img
-                                                src="https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z468507245738775565b9433db55df9e7e1ab61c0d949a-2025.jpg"
-
-                                                className={"w-100 h-100 border rounded-3 hover-scale"}
-                                                alt={product.name}/>
-                                        </div>
-                                        <h3>{product.name}</h3>
-                                        <div className={"d-flex justify-content-center"}>Giá:&nbsp;
-                                            <p className={"text-danger fw-bold"}>{formatCurrency(product.price)}</p>
-                                        </div>
-                                    </Link>
                                     <button className={"btn btn-success"}>Thêm vào giỏ hàng</button>
                                 </div>
                             </div>

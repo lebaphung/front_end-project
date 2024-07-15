@@ -171,7 +171,6 @@ export default function Header() {
                             3<span className="visually-hidden">3</span>
                         </div>
                     </div>
-
                 </Link>
             </div>
         </nav>

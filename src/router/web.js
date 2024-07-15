@@ -9,7 +9,7 @@ import DichVu from "../components/DichVu";
 import LoginCG from "../components/login/LoginCG";
 import Register from "../components/login/Register";
 import KTNN from "../components/KTNN";
-import ProductDetail from "../components/ProductDetail";
+import ProductDetail, {loadProduct} from "../components/ProductDetal/ProductDetail";
 
 export const router = createBrowserRouter([
     {
@@ -17,18 +17,19 @@ export const router = createBrowserRouter([
         element: <App/>,
         errorElement: <Error/>,
         children: [{
-                path: '/',
-            element: <Home/>
+             path: '/',
+             element: <Home/>
             },
             {
                 path: 'list-product',
                 element: <ProductList/>
-            }, {
-                path: 'product/:productId',
-                element: <ProductDetail/>
-                // element: <ProductDetail/>,
-                // loader: loadProduct,
-            },{
+            },
+            {
+                element: <ProductDetail/>,
+                path: 'product/:id',
+                }
+                ,
+            ,{
                 path: 'vct',
                 element: <VeChungToi/>
             },
