@@ -57,6 +57,8 @@ Vi dụ cho trường hợp của products:
 ##1.6. PHÂN TRANG. Lấy trang đầu tiên với 8 sản phẩm : /api/products?_page=1&_limit=8
 ##1.7. Phương thức POST: làm việc với :/api/products (bỏ trường creacteAdded vì api tự thêm)
 
+##1.8  Phương thức POST: làm việc với :/api/users (3 trường : name, email, password).
+
 
 
 

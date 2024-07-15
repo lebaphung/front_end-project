@@ -1,4 +1,4 @@
-import './style.css'
+import './css/style.css'
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {filterProducts, searchProducts, sort} from "../redux/Action";

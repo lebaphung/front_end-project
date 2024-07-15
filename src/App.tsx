@@ -7,17 +7,20 @@ import {loadProducts} from "./redux/Action";
 import {Outlet, Route, RouterProvider, Routes, BrowserRouter, redirect, useLocation} from "react-router-dom";
 import Home from "./components/Home";
 import ProductList from "./components/ProductList";
-import VeChungToi from "./components/VeChungToi";
+import VeChungToi from "./components/static_pages/VeChungToi";
 import {SendMailDemo} from "./service.mail/DemoSendEmail";
-import ContactUs from "./components/ContactUs";
-import Cart from "./components/Cart/Cart";
+import ContactUs from "./components/static_pages/ContactUs";
+import Cart from "./components/cart/Cart";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Checkout from "./components/Checkout/Checkout";
-import DichVu from "./components/DichVu";
-import KTNN from "./components/KTNN";
+import Checkout from "./components/checkout/Checkout";
+import DichVu from "./components/static_pages/DichVu";
+import KTNN from "./components/static_pages/KTNN";
 import LoginCG from "./components/login/LoginCG";
 import Register from "./components/login/Register";
+
 import ProductDetail from "./components/ProductDetal/ProductDetail";
+import PurchaseGuide from "./components/static_pages/PurchaseGuide";
+import OrderHistory from "./components/OrderHistory";
 function App() {
     // Lấy dữ liệu từ file json => đưa vào mảng.
     const [products, setProducts] = useState([]);
@@ -67,10 +70,14 @@ function App() {
                 <Route path="/login" element={<LoginCG/>}/>
                 <Route path="/register" element={<Register/>}/>
                 <Route path="/product/:id" element={<ProductDetail/>} />
+
+                <Route path="/purchaseGuide" element={<PurchaseGuide/>}/>
+                <Route path="/orderHistory" element={<OrderHistory/>}/>
+                {/*<Route path="/:id" element={<ProductDetail/>} loader={loadProduct}/>*/}
+
             </Routes>
             {location.pathname !== '/login' && location.pathname !== '/register' && <Footer />}
         </div>
-
     );
 }
 

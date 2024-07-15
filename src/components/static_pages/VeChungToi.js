@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './vct.module.css';
+import styles from '../css/vct.module.css';
 
 const VeChungToi = () => {
     return (

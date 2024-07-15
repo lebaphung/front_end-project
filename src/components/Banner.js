@@ -1,5 +1,5 @@
 import Carousel from 'react-bootstrap/Carousel';
-import './style.css';
+import './css/style.css';
 import React, { useState, useEffect } from 'react';
 function Banner() {
     const [bannerItems, setBannerItems] = useState([]);
