@@ -1,13 +1,18 @@
 import React, {useEffect, useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { CiSquarePlus } from "react-icons/ci";
+import { FaMinus, FaPlus } from "react-icons/fa";
 import { useParams} from "react-router-dom";
 import {formatCurrency} from '../../FormatCurrency';
 import  "./pdstyle.css";
+import AddToCartForm from "./AddToCartForm";
 const ProductDetail = () => {
     const  {id} = useParams(); // Lấy id từ URL.
     const [product, setProduct] =  useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+        // xu ly anh :
+    const [mainImage, setMainImage] = useState('');
+
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -18,6 +23,7 @@ const ProductDetail = () => {
             }
             const  data = await  response.json();
             setProduct(data);
+            setMainImage(data.img[0]);
             setLoading(false);
 
 
@@ -34,6 +40,15 @@ const ProductDetail = () => {
     if(!product) {
         return <div>Không tìm thấy sản phẩm.</div>
     }
+    const handleThumbnailClick = (image) => {
+        setMainImage(image);
+    }
+
+    // thêm vào giỏ hàng.
+    const handleAddToCartSubmit = (formValues) => {
+        console.log('Form submit: ' + formValues)
+    }
+
 
     return (
 
@@ -42,35 +57,40 @@ const ProductDetail = () => {
         <div className="row g-4 my-3">
         <div className="col-lg-12">
             <div className="row g-4 container-intro ">
-                <div className="col-lg-6">
-                    <div className="border rounded">
+                <div className="col-lg-6 d-flex flex-row justify-content-around">
+                <div className="col-lg-2">
+                    <div className="small-img-col d-flex flex-column  ">
+                        {product.img.map((image,index) => (
+                            <img  key={index} src={image} alt={`Thumbnail ${index +1}`}
+                            onClick={() => handleThumbnailClick(image)}/>
+                        ))}
+                    </div>
+
+                </div>
+                    <div className="border rounded image-wrapper col-lg-10">
                         <a href="#">
                             <img
-                                src={product.img}
-                                className="img-fluid rounded w-100 object-fit-cover"
+                                src={mainImage}
+                                className="img-fluid rounded w-100 object-fit-cover m-auto"
                                 alt="Image"
                             />
                         </a>
                     </div>
                 </div>
                 <div className="col-lg-6">
-                    <h4 className="fw-bold mb-3">{product.name}</h4>
+                    <h3 className="fw-bold mb-3">{product.name}</h3>
                     <p className="mb-3">Đã bán : {product.amountSold}</p>
-                    <h5 className="fw-bold text-danger mb-3">{formatCurrency(product.price)}</h5>
-                    <div className="d-flex mb-4">
-                        <i className="fa fa-star text-secondary"/>
-                        <i className="fa fa-star text-secondary"/>
-                        <i className="fa fa-star text-secondary"/>
-                        <i className="fa fa-star text-secondary"/>
-                        <i className="fa fa-star"/>
-                    </div>
-                    <p className="mb-4 fst-italic">
-                        {product.description}
+                    <h4 className="fw-bold text-danger mb-3">{formatCurrency(product.price)}</h4>
+                    <p className="mb-3 fst-italic">
+                        Giao hàng tận nơi trên toàn quốc. <br/>
+                        Nếu quý khách có nhu cầu mua sỉ với số lượng cực lớn, cần tư vấn vui lòng liên hệ trực tiếp với
+                        thông tin ở cuối trang.
                     </p>
-                    <div className="input-group quantity mb-5" style={{width: 100}}>
+                    <div className="input-group quantity mb-3 " style={{width: 100}}>
+
                         <div className="input-group-btn">
                             <button className="btn btn-sm btn-minus rounded-circle bg-light border">
-                                <i className="fa fa-minus"/>
+                                <FaMinus/>
                             </button>
                         </div>
                         <input
@@ -80,16 +100,16 @@ const ProductDetail = () => {
                         />
                         <div className="input-group-btn">
                             <button className="btn btn-sm btn-plus rounded-circle bg-light border">
-                                <FontAwesomeIcon icon="fas fa-plus" />
+                                <FaPlus/>
                             </button>
                         </div>
                     </div>
-                    <a
-                        href="#"
-                        className="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"
-                    >
-                        <i className="fa fa-shopping-bag me-2 text-primary"/> Thêm vào giỏ hàng
-                    </a>
+
+
+                    {/*<AddToCartForm onSubmit={handleAddToCartSubmit}></AddToCartForm>*/}
+                    <button className={"btn btn-success"}>Thêm vào giỏ hàng</button>
+                    <button className={"ms-3 btn btn-danger"}>Mua ngay</button>
+
                 </div>
                 <div className="col-lg-12">
                     <nav>

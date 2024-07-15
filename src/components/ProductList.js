@@ -69,7 +69,7 @@ const ProductList = () => {
                                       to={`/product/${product.id}`}>
                                     <div className={"p-2"}>
                                         <img
-                                            src={product.img}
+                                            src={product.img[0]}
                                             className={"w-100 h-100 border rounded-3 hover-scale"}
                                             alt={product.name}/>
                                     </div>
