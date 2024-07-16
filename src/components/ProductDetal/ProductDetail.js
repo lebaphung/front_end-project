@@ -5,6 +5,9 @@ import  "./pdstyle.css";
 import AddToCartForm from "./AddToCartForm";
 import Slider from "react-slick";
 import CategorySp from "../utils/CategorySP";
+import {useDispatch} from "react-redux";
+import {addToCart} from "../../redux/Action";
+
 const ProductDetail = () => {
     const  {id} = useParams(); // Lấy id từ URL.
     const [product, setProduct] =  useState(null);
@@ -12,6 +15,7 @@ const ProductDetail = () => {
     const [error, setError] = useState(null);
         // xu ly anh :
     const [mainImage, setMainImage] = useState('');
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -44,8 +48,16 @@ const ProductDetail = () => {
     }
 
     // thêm vào giỏ hàng.
-    const handleAddToCartSubmit = (formValues) => {
-        console.log('Form submit: ' + JSON.stringify(formValues));
+    const handleAddToCartSubmit = ({quantity}) => {
+        // console.log('Form submit: ' + JSON.stringify(formValues));
+        const action = addToCart({
+            id: product.id,
+            product,
+            quantity,
+
+        })
+        console.log(action)
+        dispatch(action);
     }
 
 

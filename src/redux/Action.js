@@ -1,9 +1,9 @@
 import {
-    ADD_CART,
-    CHANGE_QUANTITY_CART,
+    ADD_TO_CART,
+    SET_QUANTITY,
     FILTER_PRODUCTS,
     LOAD_PRODUCTS, PAYMENT, PRICE_FILTER,
-    REMOVE_CART,
+    REMOVE_FROM_CART,SHOW_MINI_CART,HIDE_MINI_CART,
     SEARCH_PRODUCTS, SORT
 } from "./ActionType";
 
@@ -25,24 +25,39 @@ export const filterProducts = (filter) => (
         payload: {filter}
     }
 )
-export const addCart = (productId) => (
+
+
+//  XU LY CART
+
+export const showMiniCart = () =>  ({
+    type: SHOW_MINI_CART,
+});
+
+export const hideMiniCart = () => ({
+    type:HIDE_MINI_CART,
+});
+
+
+export const addToCart = (newItem) => (
     {
-        type: ADD_CART,
-        payload: {productId}
+        type: ADD_TO_CART,
+        payload: newItem
     }
 )
-export const removeCart = (productId) => (
+export const removeFromCart = (idNeedToRemove) => (
     {
-        type: REMOVE_CART,
-        payload: {productId}
+        type: REMOVE_FROM_CART,
+        payload: idNeedToRemove,
     }
 )
-export const changeQuantityCart = (productId, quantity) => (
+export const setQuantity = (id, quantity) => (
     {
-        type: CHANGE_QUANTITY_CART,
-        payload: {productId, quantity}
+        type: SET_QUANTITY,
+        payload: {id, quantity},
     }
 )
+
+
 export const payment = (fullName, phoneNumber, email, address, note) => (
     {
         type: PAYMENT,

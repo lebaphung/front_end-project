@@ -1,7 +1,5 @@
 import './css/style.css'
 import React, {useEffect, useState} from "react";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faShoppingBag} from '@fortawesome/free-solid-svg-icons'
 import {CiLogout} from "react-icons/ci";
 import {FaUser} from "react-icons/fa";
 import {FaHistory} from "react-icons/fa";
@@ -20,6 +18,7 @@ import CategoryFilter from "./CategoryFilter";
 // npm install react-icons
 import {PiList} from "react-icons/pi";
 import {FaShoppingCart} from "react-icons/fa";
+import {cartItemsCountSelector} from "./cart/selectors";
 
 export default function Header() {
     const navigate = useNavigate();
@@ -36,6 +35,7 @@ export default function Header() {
             return matchsFilter && matchsSearch;
         })
     });
+    const cartItemsCount = useSelector(cartItemsCountSelector)
     const dispatch = useDispatch();
     const handleSearchChange = (value) => {
         setSearch(value);
@@ -214,13 +214,14 @@ export default function Header() {
                     )}
                     <Link to="/cart" className="cart-icon">
                         <div className="position-relative">
-                            <div className="d-flex rounded-circle align-items-center justify-content-center bg-light"
-                                 style={{height: "40px", width: "40px"}}>
-                                <FaShoppingCart className="fs-3 text-center" style={{fontSize: "24px"}}/>
+                            <div className="d-flex rounded-circle align-items-center justify-content-center "
+                                 style={{height: "40px", width: "40px", backgroundColor: "#ffc107"}}>
+                                <FaShoppingCart className="fs-3 text-center" style={{fontSize: "24px", color: "#198754"}}/>
                             </div>
                             <div
                                 className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                3<span className="visually-hidden">3</span>
+                                {cartItemsCount}
+                                <span className="visually-hidden">0</span>
                             </div>
                         </div>
                     </Link>

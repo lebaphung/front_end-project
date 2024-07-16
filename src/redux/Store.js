@@ -3,8 +3,9 @@ import { configureStore } from '@reduxjs/toolkit';
 
 const store = configureStore({
     reducer: rootReducer, // Truyền rootReducer vào đây
+
 });
 
-console.log(store.getState())
+console.log("Store thay đổi: " + store.getState())
 
 export default store;

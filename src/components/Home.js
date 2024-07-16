@@ -49,9 +49,9 @@ const Home = () => {
            <div className={"container"}>
                <Banner/>
            </div>
-            <div className="container mt-2">
+
             <CategorySp/>
-            </div>
+
             {/* Danh sách sản phẩm phân loại theo bán ra*/}
             <div className="container mt-5">
                 <div className="mb-5">

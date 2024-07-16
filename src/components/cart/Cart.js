@@ -1,7 +1,19 @@
 import './CartStyle.css'
 import React from 'react';
+import PropTypes from 'prop-types';
+import {useSelector} from "react-redux";
+import {cartTotalSelector} from "./selectors";
 
-const Cart = () => {
+Cart.propTypes = {
+
+};
+
+
+function Cart(props) {
+
+    const cartTotal = useSelector(cartTotalSelector);
+
+
     return (
         <div class="container-fluid py-5">
             <div class="container py-5">
@@ -9,7 +21,7 @@ const Cart = () => {
                     <table class="table">
                         <thead>
                         <tr>
-                    np       <th scope="col">Sản phẩm</th>
+                     <th scope="col">Sản phẩm</th>
                             <th scope="col">Tên sản phẩm</th>
                             <th scope="col">Đơn giá</th>
                             <th scope="col">Số lượng</th>
@@ -65,10 +77,10 @@ const Cart = () => {
                     <div class="col-sm-8 col-md-7 col-lg-6 col-xl-4">
                         <div class="bg-light rounded">
                             <div class="p-4">
-                                <h1 class="display-6 mb-4">Cart <span class="fw-normal">Total</span></h1>
+                                <h1 class="display-6 mb-4">Tổng Tiền</h1>
                                 <div class="d-flex justify-content-between mb-4">
-                                    <h5 class="mb-0 me-4">Subtotal:</h5>
-                                    <p class="mb-0">$96.00</p>
+                                    <h5 class="mb-0 me-4">Tạm tính:</h5>
+                                    <p class="mb-0">{cartTotal}</p>
                                 </div>
                                 <div class="d-flex justify-content-between">
                                     <h5 class="mb-0 me-4">Shipping</h5>
