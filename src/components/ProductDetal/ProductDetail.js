@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import {Outlet, NavLink, useParams, Route, useMatch} from "react-router-dom";
+import {Outlet, NavLink, useParams, Route, useMatch, Link} from "react-router-dom";
 import {formatCurrency} from '../../FormatCurrency';
 import  "./pdstyle.css";
 import AddToCartForm from "./AddToCartForm";
+import Slider from "react-slick";
+import CategorySp from "../utils/CategorySP";
 const ProductDetail = () => {
     const  {id} = useParams(); // Lấy id từ URL.
     const [product, setProduct] =  useState(null);
@@ -139,12 +141,12 @@ const ProductDetail = () => {
 
                     </div>
                 </div>
-                <div className="col-lg-12">
+                <div className="col-lg-12 mb-5">
                     <nav>
                         <div className="nav nav-tabs mb-3 p-3" style={{fontSize: "20px", fontWeight:"bold"}}>
                            Khám phá các giống cây
                         </div>
-
+                        <CategorySp/>
 
 
 

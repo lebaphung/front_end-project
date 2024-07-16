@@ -8,6 +8,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Banner from './Banner'
 import {formatCurrency} from '../FormatCurrency';
+import CategorySp from "./utils/CategorySP";
 
 const Home = () => {
     const urlAPI = "https://json-server-api-tv8h.onrender.com/api/products"
@@ -48,6 +49,9 @@ const Home = () => {
            <div className={"container"}>
                <Banner/>
            </div>
+            <div className="container mt-2">
+            <CategorySp/>
+            </div>
             {/* Danh sách sản phẩm phân loại theo bán ra*/}
             <div className="container mt-5">
                 <div className="mb-5">
