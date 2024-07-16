@@ -12,6 +12,7 @@ import Register from "../components/login/Register";
 import ProductDetail from "../components/ProductDetal/ProductDetail";
 
 import KTNN from "../components/static_pages/KTNN";
+import ProductMenu from "../components/ProductDetal/ProductMenu";
 
 
 export const router = createBrowserRouter([
@@ -32,6 +33,8 @@ export const router = createBrowserRouter([
                 path: 'product/:id',
                 }
                 ,
+
+
             ,{
                 path: 'vct',
                 element: <VeChungToi/>

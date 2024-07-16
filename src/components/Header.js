@@ -121,16 +121,16 @@ export default function Header() {
             <nav className={`navbar navbar-light ${isSticky ? "sticky" : ""}`}
                  style={{backgroundColor: "rgb(25,135, 84)"}}>
                 <div className="container">
-                    <div className="link-container">
+                    <div className="link-container hover-background">
                         {location.pathname === '/list-product' && (
                             <div to="/list-product" className={"active-link"} onClick={handleToProductsPage}
-                                  style={{padding: "10px 5px", background: "white", color: "black", cursor: "pointer"}}>
+                                  style={{padding: "10px 5px",color: "white", cursor: "pointer", borderRadius: "10px 10px 0px 0px"}}>
                                 Danh sách sản phẩm <PiList/>
                             </div>
                         )}
                         {location.pathname !== '/list-product' && (
                             <div to="/list-product" className={"link hover-link"} onClick={handleToProductsPage}
-                                  style={{padding: "10px 5px", background: "white", color: "black", cursor: "pointer"}}>
+                                  style={{padding: "10px 5px", color: "white", cursor: "pointer"}}>
                                 Danh sách sản phẩm <PiList/>
                             </div>
                         )}
