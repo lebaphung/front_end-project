@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import {formatCurrency} from '../FormatCurrency';
 import DetailFilters from "./DetailFilters";
+import {addToCart} from "../redux/Action";
 
 const ProductList = () => {
     const dispatch = useDispatch();
@@ -78,7 +79,18 @@ const ProductList = () => {
                                         <p className={"text-danger fw-bold"}>{formatCurrency(product.price)}</p>
                                     </div>
                                 </Link>
-                                <button className={"btn btn-success"}>Thêm vào giỏ hàng</button>
+                                <button className={"btn btn-success"}
+
+                                        onClick={() => dispatch(addToCart(
+                                            {
+                                                id: product.id,
+                                                product,
+                                                quantity: 1
+                                            }
+                                        )) }
+
+
+                                >Thêm vào giỏ hàng</button>
                             </div>
                         </div>
                     ))}

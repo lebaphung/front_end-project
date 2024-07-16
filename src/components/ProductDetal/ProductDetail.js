@@ -49,7 +49,6 @@ const ProductDetail = () => {
 
     // thêm vào giỏ hàng.
     const handleAddToCartSubmit = ({quantity}) => {
-        // console.log('Form submit: ' + JSON.stringify(formValues));
         const action = addToCart({
             id: product.id,
             product,

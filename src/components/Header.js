@@ -19,6 +19,7 @@ import CategoryFilter from "./CategoryFilter";
 import {PiList} from "react-icons/pi";
 import {FaShoppingCart} from "react-icons/fa";
 import {cartItemsCountSelector} from "./cart/selectors";
+import ShowMiniCart from "./cart/ShowMiniCart";
 
 export default function Header() {
     const navigate = useNavigate();
@@ -37,6 +38,7 @@ export default function Header() {
     });
     const cartItemsCount = useSelector(cartItemsCountSelector)
     const dispatch = useDispatch();
+    const showMiniCart = useSelector(state => state.showMiniCart);
     const handleSearchChange = (value) => {
         setSearch(value);
         dispatch(searchProducts(value))
@@ -226,7 +228,12 @@ export default function Header() {
                         </div>
                     </Link>
                 </div>
+
+                {showMiniCart && (
+                <ShowMiniCart/>
+                )}
             </nav>
+
         </header>
     )
         ;

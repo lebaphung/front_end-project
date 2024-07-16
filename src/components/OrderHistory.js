@@ -86,7 +86,7 @@ const OrderDetails = ({order}) => {
                                     {products[index] && (
                                         <>
                                             <td>
-                                                <Link to={`/product/${products[index].id}`}> <img className={"m-3 w-75"} src={products[index].img} alt={products[index].img}/></Link>
+                                                <Link to={`/product/${products[index].id}`}> <img className={"m-3 w-75"} src={products[index].img[0]} alt={products[index].img[1]}/></Link>
                                             </td>
                                             <td>
                                             {products[index].name}

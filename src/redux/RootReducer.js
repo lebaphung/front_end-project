@@ -117,12 +117,14 @@ const rootReducer = (state = initialState, action) => {
                 index === existingItemIndex ? {...item, quantity: item.quantity + newItem.quantity} : item );
                 return {
                     ...state,
+                    showMiniCart: true,
                     cartItems: updatedCartItems,
                 };
 
             } else {
                 return {
                     ...state,
+                    showMiniCart: true,
                     cartItems: [...state.cartItems, newItem],
                 }
 

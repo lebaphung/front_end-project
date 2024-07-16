@@ -9,12 +9,16 @@ import 'slick-carousel/slick/slick-theme.css';
 import Banner from './Banner'
 import {formatCurrency} from '../FormatCurrency';
 import CategorySp from "./utils/CategorySP";
+import {useDispatch} from "react-redux";
+import {addToCart, showMiniCart} from "../redux/Action";
 
 const Home = () => {
     const urlAPI = "https://json-server-api-tv8h.onrender.com/api/products"
     const [topSellingProducts, setTopSellingProducts] = useState([]);
     const [recentProducts, setRecentProducts] = useState([]);
     const [categorySixProducts, setCategorySixProducts] = useState([]);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         fetch(urlAPI)
             .then(response => response.json())
@@ -35,6 +39,8 @@ const Home = () => {
             .catch(error => console.error('Error fetching banner items:', error));
     }, []);
     console.log(topSellingProducts)
+
+
     // Cấu hình của carousel
     const settings = {
         dots: true,
@@ -43,6 +49,7 @@ const Home = () => {
         slidesToShow: 4, // Số lượng sản phẩm hiển thị trên mỗi slide
         slidesToScroll: 1,
     };
+
 
     return (
         <div>
@@ -75,7 +82,16 @@ const Home = () => {
                                             <p className={"text-danger fw-bold"}>{formatCurrency(product.price)}</p>
                                         </div>
                                     </Link>
-                                    <button className={"btn btn-success"}>Thêm vào giỏ hàng</button>
+                                    <button className={"btn btn-success"}
+                                            onClick={() => dispatch(addToCart(
+                                                {
+                                                    id: product.id,
+                                                    product,
+                                                    quantity: 1
+                                                }
+                                            )) }
+
+                                    >Thêm vào giỏ hàng</button>
                                 </div>
                             </div>
                         ))}
@@ -105,7 +121,19 @@ const Home = () => {
                                             <p className={"text-danger fw-bold"}>{formatCurrency(product.price)}</p>
                                         </div>
                                     </Link>
-                                    <button className={"btn btn-success"}>Thêm vào giỏ hàng</button>
+                                    <button className={"btn btn-success"}
+                                            onClick={() => dispatch(addToCart(
+                                                {
+                                                    id: product.id,
+                                                    product,
+                                                    quantity: 1
+                                                }
+                                            ))
+
+
+                                            }
+
+                                    >Thêm vào giỏ hàng</button>
                                 </div>
                             </div>
                         ))}
@@ -121,7 +149,15 @@ const Home = () => {
                             <div key={product.id} className={"p-2 text-center"}>
                                 {/* Hiển thị thông tin sản phẩm */}
                                 <div className={"p-2"}>
-                                    <button className={"btn btn-success"}>Thêm vào giỏ hàng</button>
+                                    <button className={"btn btn-success"}
+
+                                            onClick={() => dispatch(addToCart(
+                                        {
+                                            id: product.id,
+                                            product,
+                                            quantity: 1
+                                        }
+                                    )) }>Thêm vào giỏ hàng</button>
                                 </div>
                             </div>
                         ))}

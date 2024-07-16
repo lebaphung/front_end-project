@@ -31,15 +31,6 @@ function AddToCartForm({onSubmit = null}) {
 
     return (
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-            {/*<Controller name="quantity" control={control} render={({field}) => (*/}
-            {/*    <>*/}
-            {/*    <input{...field} />*/}
-            {/*        {errors.quantity && <p >{errors.quantity.message}</p>}*/}
-            {/*    </>*/}
-
-            {/*)} />*/}
-            {/*<QuantityField form={form} name="quantity" label="quantity" />*/}
-            {/*<input name="quantity" label="quantity" form={form}/>*/}
             <QuantityField form={{control,errors}}
                            name="quantity"
                            label="Số lượng"/>

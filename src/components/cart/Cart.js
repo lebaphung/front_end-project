@@ -25,7 +25,7 @@ function Cart(props) {
                             <th scope="col">Tên sản phẩm</th>
                             <th scope="col">Đơn giá</th>
                             <th scope="col">Số lượng</th>
-                            <th scope="col">Tổng tiền</th>
+                            <th scope="col">Thành tiền</th>
                             <th scope="col">Xoá</th>
                         </tr>
                         </thead>
