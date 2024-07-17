@@ -22,6 +22,7 @@ import Thankyou from "./components/checkout/Thankyou"
 import ProductDetail from "./components/ProductDetal/ProductDetail";
 import PurchaseGuide from "./components/static_pages/PurchaseGuide";
 import OrderHistory from "./components/OrderHistory";
+import CategoryFeatures from "./components/utils/categoryFeatures";
 function App() {
     // Lấy dữ liệu từ file json => đưa vào mảng.
     const [products, setProducts] = useState([]);

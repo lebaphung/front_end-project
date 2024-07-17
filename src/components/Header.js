@@ -62,10 +62,9 @@ export default function Header() {
     useEffect(() => {
         const login = JSON.parse(localStorage.getItem("loginInUser"));
         if (login) {
-            const {name} = login;
-            setName(name);
+            setName(login.name);
         }
-    });
+    }, []);
     //   toggle
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen(prevState => !prevState);

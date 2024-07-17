@@ -3,11 +3,10 @@ import {Outlet, NavLink, useParams, Route, useMatch, Link, useNavigate} from "re
 import {formatCurrency} from '../../FormatCurrency';
 import  "./pdstyle.css";
 import AddToCartForm from "./AddToCartForm";
-import Slider from "react-slick";
-import CategorySp from "../utils/CategorySP";
 import {useDispatch} from "react-redux";
 import {addToCart} from "../../redux/Action";
 import { IoMdArrowRoundBack } from "react-icons/io";
+import CategoryFeatures from "../utils/categoryFeatures";
 
 const ProductDetail = () => {
     const  {id} = useParams(); // Lấy id từ URL.
@@ -86,7 +85,7 @@ const ProductDetail = () => {
 
         <div className="row g-4 my-5">
             <div className={"DV_title text-center"} style={{position: "relative"}}>
-                <span style={{fontSize: "30px", position: "absolute", left: "5", cursor: "pointer", color: "green"}}
+                <span style={{fontSize: "30px", position: "absolute", left: "150px", cursor: "pointer", color: "green"}}
                       onClick={handleBack}>
                 <IoMdArrowRoundBack/>
             </span>
@@ -172,8 +171,8 @@ const ProductDetail = () => {
                             <div className="nav nav-tabs mb-3 p-3" style={{fontSize: "20px", fontWeight: "bold"}}>
                                 Khám phá các giống cây
                             </div>
-                            <CategorySp/>
-
+                            {/*<CategorySp/>*/}
+                            <CategoryFeatures/>
 
                         </nav>
                     </div>

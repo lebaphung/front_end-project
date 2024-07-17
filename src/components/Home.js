@@ -8,9 +8,9 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Banner from './Banner'
 import {formatCurrency} from '../FormatCurrency';
-import CategorySp from "./utils/CategorySP";
 import {useDispatch} from "react-redux";
 import {addToCart, showMiniCart} from "../redux/Action";
+import CategoryFeatures from "./utils/categoryFeatures";
 
 const Home = () => {
     const urlAPI = "https://json-server-api-tv8h.onrender.com/api/products"
@@ -42,7 +42,7 @@ const Home = () => {
 
 
     // Cấu hình của carousel
-    const settings = {
+     const settings = {
         dots: true,
         infinite: false,
         speed: 500,
@@ -57,10 +57,13 @@ const Home = () => {
                <Banner/>
            </div>
 
-            <CategorySp/>
+
+            <div className={"container"}>
+            <CategoryFeatures/>
+            </div>
 
             {/* Danh sách sản phẩm phân loại theo bán ra*/}
-            <div className="container mt-5">
+            <div className="container mt-5 ">
                 <div className="mb-5">
                     <div className="vct_title text-center mt-5">
                         <h2 className={"background-image-vct"}>Giống cây bán chạy nhất</h2>

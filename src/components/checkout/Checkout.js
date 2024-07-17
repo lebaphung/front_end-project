@@ -9,6 +9,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from 'yup'
 import {clearCart} from "../../redux/Action";
 import {useNavigate} from "react-router-dom";
+import {IoMdArrowRoundBack} from "react-icons/io";
 
 
 
@@ -40,6 +41,10 @@ const Checkout = () => {
         },
         resolver: yupResolver(schema),
     });
+
+    const handleBack = () => {
+        navigate(-1); // Điều hướng trở lại trang trước
+    };
 
     const onSubmit = async (values) => {
         const orderData = {
@@ -100,6 +105,10 @@ const Checkout = () => {
 
         <div>
             <div className={"DV_title text-center mt-5"}>
+                <span style={{fontSize: "30px", position: "absolute", left: "150px", cursor: "pointer", color: "green"}}
+                onClick={handleBack}>
+                <IoMdArrowRoundBack/>
+            </span>
                 <h1 className={styles.background_images_DV}>THANH TOÁN</h1>
             </div>
 
