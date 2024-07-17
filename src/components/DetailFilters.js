@@ -38,6 +38,7 @@ export default function DetailFilters() {
                 dispatch(priceFilter(start, end));
             else document.getElementById("rangePriceValidation").innerHTML = 'Vui lòng điền khoảng giá phù hợp';
         } else {
+            dispatch(priceFilter(0, null))
             document.getElementById("rangePriceValidation").innerHTML = 'Vui lòng điền khoảng giá phù hợp';
         }
     };
