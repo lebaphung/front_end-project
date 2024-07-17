@@ -3,8 +3,8 @@ import {
     SET_QUANTITY,
     FILTER_PRODUCTS,
     LOAD_PRODUCTS, PAYMENT, PRICE_FILTER,
-    REMOVE_FROM_CART,SHOW_MINI_CART,HIDE_MINI_CART,
-    SEARCH_PRODUCTS, SORT
+    REMOVE_FROM_CART, SHOW_MINI_CART, HIDE_MINI_CART,
+    SEARCH_PRODUCTS, SORT, CLEAR_CART
 } from "./ActionType";
 
 export const loadProducts = (data) => (
@@ -56,6 +56,12 @@ export const setQuantity = (id, quantity) => (
         payload: {id, quantity},
     }
 )
+
+export const clearCart = () => ({
+        type: CLEAR_CART,
+
+
+});
 
 
 export const payment = (fullName, phoneNumber, email, address, note) => (

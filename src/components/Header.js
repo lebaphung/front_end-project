@@ -11,7 +11,7 @@ import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "react-bootst
 // npm install react-router-dom
 import {BrowserRouter, Link, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {filterProducts, searchProducts} from "../redux/Action";
+import {clearCart, filterProducts, searchProducts} from "../redux/Action";
 import Cart from "./cart/Cart";
 import Search from "./Search";
 import CategoryFilter from "./CategoryFilter";
@@ -74,6 +74,8 @@ export default function Header() {
     const handleLogout = () => {
         // Xóa thông tin đăng nhập từ Local Storage
         localStorage.removeItem('loginInUser');
+        localStorage.removeItem('cartItems');
+        dispatch(clearCart());
         setName('');
     };
     const handleToProductsPage = () => {

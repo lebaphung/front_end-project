@@ -5,11 +5,11 @@ import {
     LOAD_PRODUCTS,
     PRICE_FILTER, REMOVE_FROM_CART, SHOW_MINI_CART, HIDE_MINI_CART,
     SEARCH_PRODUCTS,
-    SORT
+    SORT, CLEAR_CART
 } from "./ActionType";
 
 const loadCart = () => {
-    return JSON.parse(localStorage.getItem('cart')) ?? [];
+    return JSON.parse(localStorage.getItem('cartItems')) ?? [];
 }
 const initialState = {
 
@@ -21,8 +21,7 @@ const initialState = {
     startPrice: 0,
     endPrice: null,
     showMiniCart: false,
-    cartItems:[],
-    cart: loadCart(),
+    cartItems:loadCart(),
 
 }
 const rootReducer = (state = initialState, action) => {
@@ -115,6 +114,9 @@ const rootReducer = (state = initialState, action) => {
                 const updatedCartItems = state.cartItems.map((item,index)=>
 
                 index === existingItemIndex ? {...item, quantity: item.quantity + newItem.quantity} : item );
+
+                localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+
                 return {
                     ...state,
                     showMiniCart: true,
@@ -122,11 +124,17 @@ const rootReducer = (state = initialState, action) => {
                 };
 
             } else {
+
+                //ad
+                const updateCartItems = [...state.cartItems, newItem];
+                localStorage.setItem('cartItems', JSON.stringify(updateCartItems));
+
                 return {
                     ...state,
                     showMiniCart: true,
                     cartItems: [...state.cartItems, newItem],
                 }
+
 
             }
 
@@ -137,6 +145,9 @@ const rootReducer = (state = initialState, action) => {
              */
             const idNeedToRemove = action.payload;
             const filteredCartItems = state.cartItems.filter(x => x.id !== idNeedToRemove);
+
+            localStorage.setItem('cartItems', JSON.stringify(filteredCartItems));
+
             return {
                 ...state,
                 cartItems: filteredCartItems,
@@ -153,11 +164,19 @@ const rootReducer = (state = initialState, action) => {
                 item.id === id ? {...item, quantity} : item
 
             );
+            localStorage.setItem("cartItems", JSON.stringify( updateCartItems));
 
 
             return {
                 ...state,
                 cartItems: updateCartItems,
+            }
+
+        case CLEAR_CART:
+            localStorage.removeItem('cartItems');
+            return {
+                ...state,
+                cartItems: [],
             }
 
 

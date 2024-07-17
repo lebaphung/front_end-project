@@ -1,11 +1,28 @@
 import React, {useState} from 'react';
 import styles from './Checkout.module.css'
+import { CiCircleRemove } from "react-icons/ci";
+import {useDispatch, useSelector} from "react-redux";
+import {cartTotalSelector} from "../cart/selectors";
+import {formatCurrency} from "../../FormatCurrency";
 const Checkout = () => {
+
+    const cartTotal = useSelector(cartTotalSelector);
+    const cartItems = useSelector(state => state.cartItems);
+    const dispatch = useDispatch();
+
     return(
-        <div className= {styles.container}>
-            {/*Phan 1*/}
-            <div className={styles.right}>
-                <p className={styles.TitleGH}>
+        <div>
+            <div className={"DV_title text-center mt-5"}>
+                <h1 className={styles.background_images_DV}>THANH TOÁN</h1>
+            </div>
+
+
+    <div className={styles.container}>
+
+
+        {/*Phan 1*/}
+        <div className={styles.right}>
+            <p className={styles.TitleGH}>
                     GIỎ HÀNG CỦA BẠN:
                 </p>
                 <div className={styles.solidR}></div>
@@ -25,43 +42,31 @@ const Checkout = () => {
                                 Thành Tiền
                             </th>
                         </tr>
-                        <tr className={styles.tr}>
-                            <td>
-                                <img className={"m-3 w-100"}
-                                     src={"https://trungtamcaygiongtiengiang.com/watermark/product/540x540x1/upload/product/z5353502009320c2555d812b8b632f254cdee9acec48c4-4104.jpg"}
-                                     alt="Image1"/>
-                            </td>
-                            <td>
-                                Táo Thái Xanh
-                            </td>
-                            <td>
-                                1
-                            </td>
-                            <td className={"text-danger"}>
-                                100.000đ
-                            </td>
-                        </tr>
-                        <tr className={styles.tr}>
-                            <td>
-                                <img className={"m-3 w-100"}
-                                     src={"https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/1accc77c-2dcc-4bb0-b2b9-8e363e553ff4-4020.jpeg"}
-                                     alt="Image1"/>
-                            </td>
-                            <td>
-                                Cherry Brazil
-                            </td>
-                            <td>
-                                2
-                            </td>
-                            <td className={"text-danger"}>
-                                200.000đ
-                            </td>
-                        </tr>
+                        {cartItems.map(item => (
+
+
+                            <tr className={styles.tr} key={item.id}>
+                                <td>
+                                    <img style={{maxWidth: "100px"}} className={"m-3 w-100"}
+                                         src={item.product.img[0]}
+                                         alt={item.product.img[1]}/>
+                                </td>
+                                <td>
+                                    {item.product.name}
+                                </td>
+                                <td>
+                                    {item.quantity}
+                                </td>
+                                <td className={"text-danger"}>
+                                    {formatCurrency(item.quantity * item.product.price)}
+                                </td>
+                            </tr>
+                        ))}
                     </table>
                 </div>
                 <div className={styles.totalBill}>
                     <p className={"mt-3 ms-3"}>Tổng Tiền:</p>
-                    <p className="text-danger mt-3 me-3">180.000đ</p>
+                    <p className="text-danger mt-3 me-3">{formatCurrency(cartTotal+30000)}</p>
                 </div>
             </div>
             <div className={styles.solidBetween}></div>
@@ -97,6 +102,7 @@ const Checkout = () => {
                     <a>Thanh Toán</a>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

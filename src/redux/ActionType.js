@@ -10,6 +10,8 @@ export const SET_QUANTITY = "cart/setQuantity"
 export const SHOW_MINI_CART = "cart/showMiniCart"
 export const HIDE_MINI_CART = "cart/hideMiniCart"
 
+export const CLEAR_CART = "cart/clearCart";
+
 
 // ------------------
 

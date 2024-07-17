@@ -26,6 +26,8 @@ function ShowMiniCart(props) {
                 <Link to="/cart" className="w-75 d-flex justify-content-center text-decoration-none">
                 <button type="submit"
                     className={"btn btn-danger "}
+                        onClick={() => dispatch(hideMiniCart()
+                        )}
                   >
                 Xem giỏ hàng và thanh toán
                  </button>
