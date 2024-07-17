@@ -8,7 +8,12 @@ import Checkout from "../components/checkout/Checkout";
 import DichVu from "../components/static_pages/DichVu";
 import LoginCG from "../components/login/LoginCG";
 import Register from "../components/login/Register";
+
+import ProductDetail from "../components/ProductDetal/ProductDetail";
+
 import KTNN from "../components/static_pages/KTNN";
+import ProductMenu from "../components/ProductDetal/ProductMenu";
+
 
 export const router = createBrowserRouter([
     {
@@ -16,17 +21,21 @@ export const router = createBrowserRouter([
         element: <App/>,
         errorElement: <Error/>,
         children: [{
-                path: '/',
-            element: <Home/>
+             path: '/',
+             element: <Home/>
             },
             {
                 path: 'list-product',
                 element: <ProductList/>
-            }, {
+            },
+            {
+                element: <ProductDetail/>,
                 path: 'product/:id',
-                // element: <ProductDetail/>,
-                // loader: loadProduct,
-            },{
+                }
+                ,
+
+
+            ,{
                 path: 'vct',
                 element: <VeChungToi/>
             },

@@ -8,6 +8,12 @@
 .hover-link:hover {
     color: #ff9f1a;
 }
+.hover-background:hover div {
+    background-color: #f8f9fa ;
+    border-radius: 10px 10px 0px 0px;
+    color: green !important;
+}
+
 
 .active-link {
     color: #ff9f1a;
@@ -15,7 +21,6 @@
     font-size: large;
     text-decoration-line: none;
 }
-
 .link {
     color: #ffffff;
     font-weight: bold;
@@ -49,8 +54,10 @@
     color: green;
 }
 .hover-category:hover {
+    font-size: large;
     font-weight: bold;
     color: green;
+
 }
 /* Add these styles to your style.css file */
 .link-container {
@@ -69,13 +76,14 @@
 }
 
 .link-container:hover .filter-dropdown {
+    border-radius: 0px 0px 10px 10px;
     display: block;
 }
 .price-filter-group{
     border: 1px solid rgba(0, 0, 0, .09);
     margin: 1.25rem 0 0;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 0px 0px 10px 10px;
 }
 .sort-group{
     width: 100%;

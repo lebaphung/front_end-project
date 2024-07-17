@@ -3,6 +3,25 @@
     border: 1px solid #d8d8d8;
     margin: 30px 10%;
     box-shadow: 0 0 20px rgba(0, 0, 0, .15);}
+
+.DVContainer{
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 30px;
+}
+.background_images_DV {
+    background-image: url('https://trungtamcaygiongtiengiang.com/assets/images/icon01.png'); /* Đường dẫn tới hình ảnh của bạn */
+    background-repeat: no-repeat;
+    margin-bottom: 1rem;
+    text-align: center;
+    background-position-x: 50%;
+    background-position-y: 100%;
+    background-origin: padding-box;
+    background-size: auto;
+    margin-bottom: 24px;
+    padding-bottom: 30px;
+    font-weight: bold;
+}
 /*Phan 1*/
 .right{
     flex: 1.5;
@@ -71,6 +90,8 @@
     margin-left: 10px;
     border-radius: 5px;
 }
+
+
 .inputHVT {
     padding: 5px 5px;
     margin-right: 15px;
@@ -79,6 +100,7 @@
     border-radius: 5px;
     border: 1px solid #d8d8d8;
 }
+
 .inputSDT {
     padding: 5px 5px;
     flex: 1;
@@ -113,5 +135,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
 
+}
+.buttonTT:hover {
+    background: #de9413;
 }

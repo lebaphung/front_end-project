@@ -17,8 +17,12 @@ import DichVu from "./components/static_pages/DichVu";
 import KTNN from "./components/static_pages/KTNN";
 import LoginCG from "./components/login/LoginCG";
 import Register from "./components/login/Register";
+import Thankyou from "./components/checkout/Thankyou"
+
+import ProductDetail from "./components/ProductDetal/ProductDetail";
 import PurchaseGuide from "./components/static_pages/PurchaseGuide";
 import OrderHistory from "./components/OrderHistory";
+import CategoryFeatures from "./components/utils/categoryFeatures";
 function App() {
     // Lấy dữ liệu từ file json => đưa vào mảng.
     const [products, setProducts] = useState([]);
@@ -36,7 +40,7 @@ function App() {
      * 1. Callback luôn được gọi sau khi component mounted
      */
     useEffect(() => {
-        fetch('/jsondata/products.json')
+        fetch('https://json-server-api-tv8h.onrender.com/api/products')
             .then(response => response.json())
             .then(data => setProducts(data))
             .catch(error => console.error('Lỗi khi tải dữ liệu:', error));
@@ -67,9 +71,13 @@ function App() {
                 <Route path="/KTNN" element={<KTNN/>}/>
                 <Route path="/login" element={<LoginCG/>}/>
                 <Route path="/register" element={<Register/>}/>
+                <Route path="/product/:id" element={<ProductDetail/>} />
+
                 <Route path="/purchaseGuide" element={<PurchaseGuide/>}/>
                 <Route path="/orderHistory" element={<OrderHistory/>}/>
+                <Route path="/thankyou" element={<Thankyou/>}/>
                 {/*<Route path="/:id" element={<ProductDetail/>} loader={loadProduct}/>*/}
+
             </Routes>
             {location.pathname !== '/login' && location.pathname !== '/register' && <Footer />}
         </div>

@@ -1,9 +1,18 @@
-import {ADD_CART, FILTER_PRODUCTS, LOAD_PRODUCTS, PRICE_FILTER, SEARCH_PRODUCTS, SORT} from "./ActionType";
+import {
+    ADD_TO_CART,
+    SET_QUANTITY,
+    FILTER_PRODUCTS,
+    LOAD_PRODUCTS,
+    PRICE_FILTER, REMOVE_FROM_CART, SHOW_MINI_CART, HIDE_MINI_CART,
+    SEARCH_PRODUCTS,
+    SORT, CLEAR_CART
+} from "./ActionType";
 
 const loadCart = () => {
-    return JSON.parse(localStorage.getItem('cart')) ?? [];
+    return JSON.parse(localStorage.getItem('cartItems')) ?? [];
 }
 const initialState = {
+
     products: [],
     initSortProducts: [],
     filter: "ALL",
@@ -11,7 +20,8 @@ const initialState = {
     sort: "default",
     startPrice: 0,
     endPrice: null,
-    cart: loadCart(),
+    showMiniCart: false,
+    cartItems:loadCart(),
 
 }
 const rootReducer = (state = initialState, action) => {
@@ -78,13 +88,99 @@ const rootReducer = (state = initialState, action) => {
                 startPrice: action.payload.startPrice || 0,
                 endPrice: action.payload.endPrice || null
             };
-        case ADD_CART:
-            return {
+
+        //      chỉnh sửa từ đây
+        case SHOW_MINI_CART:
+            return  {
                 ...state,
-                status: action.payload.cart
+                showMiniCart: true,
+            }
+
+        case HIDE_MINI_CART:
+            return  {
+                ...state,
+                showMiniCart: false,
+            }
+
+
+         case ADD_TO_CART:
+            // Kiem tra xem co +quantity, ko thi new cartItem.
+            /*
+            * Kiem tra mang cartItems, mảng bắt đầu từ 0
+             */
+            const  newItem = action.payload;
+            const existingItemIndex = state.cartItems.findIndex(x => x.id === newItem.id);
+            if(existingItemIndex >=0 ){
+                const updatedCartItems = state.cartItems.map((item,index)=>
+
+                index === existingItemIndex ? {...item, quantity: item.quantity + newItem.quantity} : item );
+
+                localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+
+                return {
+                    ...state,
+                    showMiniCart: true,
+                    cartItems: updatedCartItems,
+                };
+
+            } else {
+
+                //ad
+                const updateCartItems = [...state.cartItems, newItem];
+                localStorage.setItem('cartItems', JSON.stringify(updateCartItems));
+
+                return {
+                    ...state,
+                    showMiniCart: true,
+                    cartItems: [...state.cartItems, newItem],
+                }
 
 
             }
+
+        case REMOVE_FROM_CART:
+            /*
+            * Lấy ra cái id product muốn xoá.
+            * cartItems lọc lại và bỏ đi cái id muốn xoá đó => xong.
+             */
+            const idNeedToRemove = action.payload;
+            const filteredCartItems = state.cartItems.filter(x => x.id !== idNeedToRemove);
+
+            localStorage.setItem('cartItems', JSON.stringify(filteredCartItems));
+
+            return {
+                ...state,
+                cartItems: filteredCartItems,
+            }
+
+        case SET_QUANTITY:
+            /**
+             *  Dùng trong + -  của giỏ hàng.
+             *  set trực tiếp value quantity cho cartItems.
+             */
+
+            const {id, quantity} = action.payload;
+            const updateCartItems = state.cartItems.map(item =>
+                item.id === id ? {...item, quantity} : item
+
+            );
+            localStorage.setItem("cartItems", JSON.stringify( updateCartItems));
+
+
+            return {
+                ...state,
+                cartItems: updateCartItems,
+            }
+
+        case CLEAR_CART:
+            localStorage.removeItem('cartItems');
+            return {
+                ...state,
+                cartItems: [],
+            }
+
+
+
 
         default:
             return state;

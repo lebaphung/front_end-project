@@ -4,6 +4,7 @@ import React, {useEffect, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import {formatCurrency} from '../FormatCurrency';
 import DetailFilters from "./DetailFilters";
+import {addToCart} from "../redux/Action";
 
 const ProductList = () => {
     const dispatch = useDispatch();
@@ -69,16 +70,30 @@ const ProductList = () => {
                                       to={`/product/${product.id}`}>
                                     <div className={"p-2"}>
                                         <img
-                                            src={product.img}
-                                            className={"w-100 h-100 border rounded-3 hover-scale"}
+                                            src={product.img[0]}
+                                            className={"w-100 border rounded-3 hover-scale"}
+                                            style={{height: "200px"}}
                                             alt={product.name}/>
                                     </div>
-                                    <h3 className={"hover-name"}>{product.name}</h3>
+                                    <h3 className={"hover-name"}
+                                        style={{height: "60px"}}
+                                    >{product.name}</h3>
                                     <div className={"d-flex justify-content-center"}>Giá:&nbsp;
                                         <p className={"text-danger fw-bold"}>{formatCurrency(product.price)}</p>
                                     </div>
                                 </Link>
-                                <button className={"btn btn-success"}>Thêm vào giỏ hàng</button>
+                                <button className={"btn btn-success"}
+
+                                        onClick={() => dispatch(addToCart(
+                                            {
+                                                id: product.id,
+                                                product,
+                                                quantity: 1
+                                            }
+                                        )) }
+
+
+                                >Thêm vào giỏ hàng</button>
                             </div>
                         </div>
                     ))}
