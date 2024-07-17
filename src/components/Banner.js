@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 function Banner() {
     const [bannerItems, setBannerItems] = useState([]);
     useEffect(() => {
-        fetch('/jsondata/banner_items.json')
+        fetch('https://json-server-api-tv8h.onrender.com/api/banner_items')
             .then(response => response.json())
             .then(data => setBannerItems(data))
             .catch(error => console.error('Error fetching banner items:', error));

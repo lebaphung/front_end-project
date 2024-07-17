@@ -63,7 +63,7 @@ const ProductList = () => {
                         </h2>
                     </div>
                     {currentProducts.map(product => (
-                        <div key={product.id} className={"p-2 col-3 text-center"}>
+                        <div key={product.id} className={"p-2 col-lg-3 col-md-4 col-sm-6 col-12 text-center"}>
                             <div className={"p-2"}>
                                 <Link className={"text-decoration-none text-dark"}
                                       to={`/product/${product.id}`}>

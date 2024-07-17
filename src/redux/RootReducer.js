@@ -75,8 +75,8 @@ const rootReducer = (state = initialState, action) => {
         case PRICE_FILTER:
             return {
                 ...state,
-                startPrice: action.payload.startPrice || state.startPrice,
-                endPrice: action.payload.endPrice || state.endPrice
+                startPrice: action.payload.startPrice || 0,
+                endPrice: action.payload.endPrice || null
             };
         case ADD_CART:
             return {
