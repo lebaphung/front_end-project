@@ -33,7 +33,7 @@ export default function CategoryFilter() {
         dispatch(filterProducts(filter))
     }
     return (
-        <div className={"rounded fw-bold bg-light p-3"}>
+        <div className={"fw-bold p-3"} style={{borderRadius: "0px 0px 10px 10px", backgroundColor: "#f8f9fa"}}>
             {categories.map((c, index) => (
                 <div key={c.id} className={"mb-2  hover-category"} style={{cursor: "pointer"}}
                     onClick={(e) => handleFilter(c.id)} //bắn action

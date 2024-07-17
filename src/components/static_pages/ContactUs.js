@@ -14,7 +14,7 @@ const ContactUs = () => {
                                     <h1 className={"background-image-vct"}>Liên hệ chúng tôi</h1>
                                 </div>
                                 <p className="mb-2 font-monospace">
-                                   <strong> NongLamSprout</strong> là công ty chuyên cung cấp các loại cây giống chất lượng cao cho khách
+                                   <strong> TrungTamCayGiong</strong> là công ty chuyên cung cấp các loại cây giống chất lượng cao cho khách
                                     hàng trồng trọt.
                                     Chúng tôi cam kết mang đến những sản phẩm tốt nhất để hỗ trợ khách hàng trong việc
                                     phát triển khu vườn của mình.

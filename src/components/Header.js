@@ -1,7 +1,5 @@
 import './css/style.css'
 import React, {useEffect, useState} from "react";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faShoppingBag} from '@fortawesome/free-solid-svg-icons'
 import {CiLogout} from "react-icons/ci";
 import {FaUser} from "react-icons/fa";
 import {FaHistory} from "react-icons/fa";
@@ -13,13 +11,15 @@ import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "react-bootst
 // npm install react-router-dom
 import {BrowserRouter, Link, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {filterProducts, searchProducts} from "../redux/Action";
+import {clearCart, filterProducts, searchProducts} from "../redux/Action";
 import Cart from "./cart/Cart";
 import Search from "./Search";
 import CategoryFilter from "./CategoryFilter";
 // npm install react-icons
 import {PiList} from "react-icons/pi";
 import {FaShoppingCart} from "react-icons/fa";
+import {cartItemsCountSelector} from "./cart/selectors";
+import ShowMiniCart from "./cart/ShowMiniCart";
 
 export default function Header() {
     const navigate = useNavigate();
@@ -36,7 +36,9 @@ export default function Header() {
             return matchsFilter && matchsSearch;
         })
     });
+    const cartItemsCount = useSelector(cartItemsCountSelector)
     const dispatch = useDispatch();
+    const showMiniCart = useSelector(state => state.showMiniCart);
     const handleSearchChange = (value) => {
         setSearch(value);
         dispatch(searchProducts(value))
@@ -60,10 +62,9 @@ export default function Header() {
     useEffect(() => {
         const login = JSON.parse(localStorage.getItem("loginInUser"));
         if (login) {
-            const {name} = login;
-            setName(name);
+            setName(login.name);
         }
-    });
+    }, []);
     //   toggle
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen(prevState => !prevState);
@@ -72,6 +73,8 @@ export default function Header() {
     const handleLogout = () => {
         // Xóa thông tin đăng nhập từ Local Storage
         localStorage.removeItem('loginInUser');
+        localStorage.removeItem('cartItems');
+        dispatch(clearCart());
         setName('');
     };
     const handleToProductsPage = () => {
@@ -121,16 +124,16 @@ export default function Header() {
             <nav className={`navbar navbar-light ${isSticky ? "sticky" : ""}`}
                  style={{backgroundColor: "rgb(25,135, 84)"}}>
                 <div className="container">
-                    <div className="link-container">
+                    <div className="link-container hover-background">
                         {location.pathname === '/list-product' && (
                             <div to="/list-product" className={"active-link"} onClick={handleToProductsPage}
-                                  style={{padding: "10px 5px", background: "white", color: "black", cursor: "pointer"}}>
+                                  style={{padding: "10px 5px",color: "white", cursor: "pointer", borderRadius: "10px 10px 0px 0px"}}>
                                 Danh sách sản phẩm <PiList/>
                             </div>
                         )}
                         {location.pathname !== '/list-product' && (
                             <div to="/list-product" className={"link hover-link"} onClick={handleToProductsPage}
-                                  style={{padding: "10px 5px", background: "white", color: "black", cursor: "pointer"}}>
+                                  style={{padding: "10px 5px", color: "white", cursor: "pointer"}}>
                                 Danh sách sản phẩm <PiList/>
                             </div>
                         )}
@@ -214,18 +217,24 @@ export default function Header() {
                     )}
                     <Link to="/cart" className="cart-icon">
                         <div className="position-relative">
-                            <div className="d-flex rounded-circle align-items-center justify-content-center bg-light"
-                                 style={{height: "40px", width: "40px"}}>
-                                <FaShoppingCart className="fs-3 text-center" style={{fontSize: "24px"}}/>
+                            <div className="d-flex rounded-circle align-items-center justify-content-center "
+                                 style={{height: "40px", width: "40px", backgroundColor: "#ffc107"}}>
+                                <FaShoppingCart className="fs-3 text-center" style={{fontSize: "24px", color: "#198754"}}/>
                             </div>
                             <div
                                 className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                3<span className="visually-hidden">3</span>
+                                {cartItemsCount}
+                                <span className="visually-hidden">0</span>
                             </div>
                         </div>
                     </Link>
                 </div>
+
+                {showMiniCart && (
+                <ShowMiniCart/>
+                )}
             </nav>
+
         </header>
     )
         ;

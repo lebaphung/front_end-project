@@ -8,12 +8,17 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Banner from './Banner'
 import {formatCurrency} from '../FormatCurrency';
+import {useDispatch} from "react-redux";
+import {addToCart, showMiniCart} from "../redux/Action";
+import CategoryFeatures from "./utils/categoryFeatures";
 
 const Home = () => {
     const urlAPI = "https://json-server-api-tv8h.onrender.com/api/products"
     const [topSellingProducts, setTopSellingProducts] = useState([]);
     const [recentProducts, setRecentProducts] = useState([]);
     const [categorySixProducts, setCategorySixProducts] = useState([]);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         fetch(urlAPI)
             .then(response => response.json())
@@ -34,8 +39,10 @@ const Home = () => {
             .catch(error => console.error('Error fetching banner items:', error));
     }, []);
     console.log(topSellingProducts)
+
+
     // Cấu hình của carousel
-    const settings = {
+     const settings = {
         dots: true,
         infinite: false,
         speed: 500,
@@ -43,13 +50,20 @@ const Home = () => {
         slidesToScroll: 1,
     };
 
+
     return (
         <div>
            <div className={"container"}>
                <Banner/>
            </div>
+
+
+            <div className={"container"}>
+            <CategoryFeatures/>
+            </div>
+
             {/* Danh sách sản phẩm phân loại theo bán ra*/}
-            <div className="container mt-5">
+            <div className="container mt-5 ">
                 <div className="mb-5">
                     <div className="vct_title text-center mt-5">
                         <h2 className={"background-image-vct"}>Giống cây bán chạy nhất</h2>
@@ -62,7 +76,7 @@ const Home = () => {
                                           to={`/product/${product.id}`}>
                                         <div className={"p-2"}>
                                             <img
-                                                src={product.img}
+                                                src={product.img[0]}
                                                 className={"w-100 h-100 border rounded-3 hover-scale"}
                                                 alt={product.name}/>
                                         </div>
@@ -71,7 +85,16 @@ const Home = () => {
                                             <p className={"text-danger fw-bold"}>{formatCurrency(product.price)}</p>
                                         </div>
                                     </Link>
-                                    <button className={"btn btn-success"}>Thêm vào giỏ hàng</button>
+                                    <button className={"btn btn-success"}
+                                            onClick={() => dispatch(addToCart(
+                                                {
+                                                    id: product.id,
+                                                    product,
+                                                    quantity: 1
+                                                }
+                                            )) }
+
+                                    >Thêm vào giỏ hàng</button>
                                 </div>
                             </div>
                         ))}
@@ -91,7 +114,7 @@ const Home = () => {
                                           to={`/product/${product.id}`}>
                                         <div className={"p-2"}>
                                             <img
-                                                src="https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z468507245738775565b9433db55df9e7e1ab61c0d949a-2025.jpg"
+                                                src={product.img[0]}
                                                 //{product.img}
                                                 className={"w-100 h-100 border rounded-3 hover-scale"}
                                                 alt={product.name}/>
@@ -101,7 +124,19 @@ const Home = () => {
                                             <p className={"text-danger fw-bold"}>{formatCurrency(product.price)}</p>
                                         </div>
                                     </Link>
-                                    <button className={"btn btn-success"}>Thêm vào giỏ hàng</button>
+                                    <button className={"btn btn-success"}
+                                            onClick={() => dispatch(addToCart(
+                                                {
+                                                    id: product.id,
+                                                    product,
+                                                    quantity: 1
+                                                }
+                                            ))
+
+
+                                            }
+
+                                    >Thêm vào giỏ hàng</button>
                                 </div>
                             </div>
                         ))}
@@ -117,21 +152,15 @@ const Home = () => {
                             <div key={product.id} className={"p-2 text-center"}>
                                 {/* Hiển thị thông tin sản phẩm */}
                                 <div className={"p-2"}>
-                                    <Link className={"text-decoration-none text-dark"}
-                                          to={`/product/${product.id}`}>
-                                        <div className={"p-2"}>
-                                            <img
-                                                src="https://trungtamcaygiongtiengiang.com/watermark/product/289x289x1/upload/product/z468507245738775565b9433db55df9e7e1ab61c0d949a-2025.jpg"
-                                                //{product.img}
-                                                className={"w-100 h-100 border rounded-3 hover-scale"}
-                                                alt={product.name}/>
-                                        </div>
-                                        <h3>{product.name}</h3>
-                                        <div className={"d-flex justify-content-center"}>Giá:&nbsp;
-                                            <p className={"text-danger fw-bold"}>{formatCurrency(product.price)}</p>
-                                        </div>
-                                    </Link>
-                                    <button className={"btn btn-success"}>Thêm vào giỏ hàng</button>
+                                    <button className={"btn btn-success"}
+
+                                            onClick={() => dispatch(addToCart(
+                                        {
+                                            id: product.id,
+                                            product,
+                                            quantity: 1
+                                        }
+                                    )) }>Thêm vào giỏ hàng</button>
                                 </div>
                             </div>
                         ))}
