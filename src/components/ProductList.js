@@ -64,17 +64,20 @@ const ProductList = () => {
                         </h2>
                     </div>
                     {currentProducts.map(product => (
-                        <div key={product.id} className={"p-2 col-3 text-center"}>
+                        <div key={product.id} className={"p-2 col-lg-3 col-md-4 col-sm-6 col-12 text-center"}>
                             <div className={"p-2"}>
                                 <Link className={"text-decoration-none text-dark"}
                                       to={`/product/${product.id}`}>
                                     <div className={"p-2"}>
                                         <img
                                             src={product.img[0]}
-                                            className={"w-100 h-100 border rounded-3 hover-scale"}
+                                            className={"w-100 border rounded-3 hover-scale"}
+                                            style={{height: "200px"}}
                                             alt={product.name}/>
                                     </div>
-                                    <h3 className={"hover-name"}>{product.name}</h3>
+                                    <h3 className={"hover-name"}
+                                        style={{height: "60px"}}
+                                    >{product.name}</h3>
                                     <div className={"d-flex justify-content-center"}>Giá:&nbsp;
                                         <p className={"text-danger fw-bold"}>{formatCurrency(product.price)}</p>
                                     </div>

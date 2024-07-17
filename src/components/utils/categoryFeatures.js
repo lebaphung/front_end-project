@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 // npm install react-slick --save
 import Slider from 'react-slick';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 import  "./liststyle.css";
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import {filterProducts} from "../../redux/Action";
+import {useDispatch} from "react-redux";
 CategoryFeatures.propTypes = {
 
 };
@@ -12,7 +14,12 @@ CategoryFeatures.propTypes = {
 function CategoryFeatures(props) {
 
     const [categories, setCategories] = useState([]);
-
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const handleFilter = (filter) => {
+        navigate(`/list-product`); // Navigate to the desired route
+        dispatch(filterProducts(filter))
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -60,8 +67,7 @@ function CategoryFeatures(props) {
                                 {caterogy.name}
                             </h2>
 
-                            <a href="#" className="button">
-
+                            <a className="button" onClick={(e) => handleFilter(caterogy.id)}>
                                 Khám phá ngay
                                 <FaArrowAltCircleRight />
                             </a>

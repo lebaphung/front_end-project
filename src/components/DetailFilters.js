@@ -30,11 +30,15 @@ export default function DetailFilters() {
 
         if (startPrice !== '' || endPrice !== '') {
             document.getElementById("rangePriceValidation").innerHTML = '';
-            if (startPrice !== '' && endPrice !== '' && startPrice <= endPrice)
+            if (startPrice !== '' && endPrice == '')
+                dispatch(priceFilter(startPrice, null))
+            else if (startPrice == '' && endPrice !== '')
+                dispatch(priceFilter(0, endPrice))
+            else if (startPrice !== '' && endPrice !== '' && startPrice <= endPrice)
                 dispatch(priceFilter(start, end));
-            else
-                document.getElementById("rangePriceValidation").innerHTML = 'Vui lòng điền khoảng giá phù hợp';
+            else document.getElementById("rangePriceValidation").innerHTML = 'Vui lòng điền khoảng giá phù hợp';
         } else {
+            dispatch(priceFilter(0, null))
             document.getElementById("rangePriceValidation").innerHTML = 'Vui lòng điền khoảng giá phù hợp';
         }
     };

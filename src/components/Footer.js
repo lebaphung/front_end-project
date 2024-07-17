@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import Subscribe from "./Subscribe";
 
 export default function Footer() {
     return (
@@ -20,21 +21,7 @@ export default function Footer() {
                         </Link>
                     </div>
                     <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 className="text-uppercase">Đăng ký nhận tin</h5>
-                        <form
-                            // onSubmit={handleSubscribe}
-                        >
-                            <div className="form-group">
-                                <input type="text" className="form-control mb-2" placeholder="Họ tên" required/>
-                            </div>
-                            <div className="form-group">
-                                <input type="tel" className="form-control mb-2" placeholder="Số điện thoại" required/>
-                            </div>
-                            <div className="form-group">
-                                <input type="email" className="form-control mb-2" placeholder="Email" required/>
-                            </div>
-                            <button type="submit" className="btn btn-success">Đăng ký</button>
-                        </form>
+                        <Subscribe/>
                     </div>
                 </div>
             </div>
