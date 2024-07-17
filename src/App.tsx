@@ -17,6 +17,7 @@ import DichVu from "./components/static_pages/DichVu";
 import KTNN from "./components/static_pages/KTNN";
 import LoginCG from "./components/login/LoginCG";
 import Register from "./components/login/Register";
+import Thankyou from "./components/checkout/Thankyou"
 
 import ProductDetail from "./components/ProductDetal/ProductDetail";
 import PurchaseGuide from "./components/static_pages/PurchaseGuide";
@@ -73,6 +74,7 @@ function App() {
 
                 <Route path="/purchaseGuide" element={<PurchaseGuide/>}/>
                 <Route path="/orderHistory" element={<OrderHistory/>}/>
+                <Route path="/thankyou" element={<Thankyou/>}/>
                 {/*<Route path="/:id" element={<ProductDetail/>} loader={loadProduct}/>*/}
 
             </Routes>

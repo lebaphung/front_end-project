@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './css/OrderHistory.module.css'
 import {Link} from "react-router-dom";
+import {formatCurrency} from "../FormatCurrency";
 
 const OrderHistory = () => {
     const [orders, setOrders] = useState([]);
@@ -95,7 +96,7 @@ const OrderDetails = ({order}) => {
                                                 x{item.quantity}
                                             </td>
                                             <td className={"text-danger"}>
-                                                {item.finalPrice}
+                                                {formatCurrency(item.finalPrice)}
                                             </td>
                                         </>
                             )}
@@ -119,7 +120,7 @@ const OrderDetails = ({order}) => {
                     </div>
                     <div className={styles.totalBill}>
                         <p className={"mt-3 ms-3"}>Tổng Tiền:</p>
-                        <p className="text-danger mt-3 me-3">{order.totalPrice}</p>
+                        <p className="text-danger mt-3 me-3">{formatCurrency(order.totalPrice)}</p>
                     </div>
                 </div>
             </div>

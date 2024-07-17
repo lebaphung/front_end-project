@@ -7,6 +7,8 @@ import {FaMinus, FaPlus, FaTimes} from "react-icons/fa";
 import styles from "../css/dv.module.css";
 import {hideMiniCart, removeFromCart, setQuantity} from "../../redux/Action";
 import {formatCurrency} from "../../FormatCurrency";
+import {Link, useNavigate} from "react-router-dom";
+import {IoMdArrowRoundBack} from "react-icons/io";
 
 Cart.propTypes = {
 
@@ -18,19 +20,28 @@ function Cart(props) {
     const cartTotal = useSelector(cartTotalSelector);
     const cartItems = useSelector(state => state.cartItems);
     const dispatch = useDispatch();
-
+    const navigate = useNavigate();
+    const handleBack = () => {
+        navigate(-1); // Điều hướng trở lại trang trước
+    };
 
     return (
-        <div class="container-fluid py-5">
-            <div className={"DV_title text-center mt-3"}>
+        <div class="container py-5">
+
+            <div className={"DV_title text-center ms-2 mt-3"} style={{position: "relative"}} >
+                <span style={{fontSize: "30px", position: "absolute", left: "0", cursor: "pointer", color: "green"}} onClick={handleBack}>
+                <IoMdArrowRoundBack/>
+            </span>
                 <h1 className={styles.background_images_DV}>GIỎ HÀNG CỦA TÔI</h1>
             </div>
 
             {cartItems.length === 0 ? (
-                    <div className="d-flex flex-column align-items-center ">
-                    <img style={{maxWidth: "300px"}} src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-7359557-6024626.png?f=webp" alt="Giỏ đang trống"/>
+                <div className="d-flex flex-column align-items-center ">
+                    <img style={{maxWidth: "300px"}}
+                         src="https://cdni.iconscout.com/illustration/premium/thumb/empty-cart-7359557-6024626.png?f=webp"
+                         alt="Giỏ đang trống"/>
                     <span style={{fontSize: "20px", fontStyle: "italic"}}>"Tưởng tượng một giỏ hàng sẵn sàng chờ bạn đổ đầy, nhưng hiện tại đang trống vắng."</span>
-                    </div>
+                </div>
             ) : (
 
 
@@ -59,8 +70,9 @@ function Cart(props) {
                                                  style={{width: 50, height: 50}} alt=""/>
                                         </div>
                                     </th>
-                                    <td>
-                                        <p class="mb-0 mt-4"><strong>{item.product.name}</strong> </p>
+                                    <td><Link to={`/product/${item.product.id}`}>
+                                        <p class="mb-0 mt-4"><strong>{item.product.name}</strong></p>
+                                    </Link>
                                     </td>
                                     <td>
                                         <p class="mb-0 mt-4">{formatCurrency(item.product.price)}</p>
@@ -74,10 +86,12 @@ function Cart(props) {
                                                     style={{cursor: 'pointer'}}
                                                     className="btn btn-sm btn-minus rounded-circle bg-light border"
                                                     onClick={() => {
-                                                        if(item.quantity > 1) {
-                                                        dispatch(
-                                                        setQuantity(item.id, item.quantity-1)
-                                                    )}}}
+                                                        if (item.quantity > 1) {
+                                                            dispatch(
+                                                                setQuantity(item.id, item.quantity - 1)
+                                                            )
+                                                        }
+                                                    }}
                                             >
                                                 <FaMinus/>
                                             </button>
@@ -90,7 +104,7 @@ function Cart(props) {
                                                     style={{cursor: 'pointer'}}
                                                     className="btn btn-sm btn-plus rounded-circle bg-light border"
                                                     onClick={() => dispatch(
-                                                        setQuantity(item.id, item.quantity+1)
+                                                        setQuantity(item.id, item.quantity + 1)
                                                     )}
                                             >
 
@@ -140,8 +154,8 @@ function Cart(props) {
                                 <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                     <h5 class="mb-0 ps-4 me-4">Tổng</h5>
                                     <p class="mb-0 pe-4 text-danger"
-                                    style={{fontSize: "20px", fontWeight: "bold"}}
-                                    >{formatCurrency(cartTotal+ 30000)}</p>
+                                       style={{fontSize: "20px", fontWeight: "bold"}}
+                                    >{formatCurrency(cartTotal + 30000)}</p>
                                 </div>
                                 <a class="btn border-secondary rounded-pill px-4 py-3 bg-danger text-light text-uppercase mb-4 ms-4"
                                    href={"http://localhost:3000/Checkout"}>Thanh Toán</a>

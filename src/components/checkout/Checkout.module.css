@@ -90,6 +90,8 @@
     margin-left: 10px;
     border-radius: 5px;
 }
+
+
 .inputHVT {
     padding: 5px 5px;
     margin-right: 15px;
@@ -98,6 +100,7 @@
     border-radius: 5px;
     border: 1px solid #d8d8d8;
 }
+
 .inputSDT {
     padding: 5px 5px;
     flex: 1;
@@ -132,5 +135,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none;
 
+}
+.buttonTT:hover {
+    background: #de9413;
 }
